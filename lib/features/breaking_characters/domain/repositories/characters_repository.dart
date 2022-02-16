@@ -4,6 +4,9 @@ import 'package:break_clean/features/breaking_characters/domain/entites/characte
 abstract class CharactersRepository {
 
 
- Future<Either<Failure, Character>> getCharacters();
+ Future<Either<Failure, Character>> getOneCharacters(int id);
+ Future<Either<Failure, Character>> getAllCharacters();
+
+
 
 }
