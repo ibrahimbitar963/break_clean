@@ -6,9 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class GetOneCharacter implements UseCase<Character,Params> {
-
   final CharactersRepository repository;
-
   GetOneCharacter(this.repository);
 
 @override
