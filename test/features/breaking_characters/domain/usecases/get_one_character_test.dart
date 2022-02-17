@@ -25,7 +25,7 @@ void main() {
     when(mockOneCharacter.getOneCharacters(characterId))
         // ignore: non_constant_identifier_names
         .thenAnswer((MockOneCharacter) async => Right(characterTest));
-    final result = await usecase(characterId);
+    final result = await usecase(Params(charId:characterId));
     expect(result, Right(characterTest));
     verify(mockOneCharacter.getOneCharacters(characterId));
     verifyNoMoreInteractions(mockOneCharacter);
