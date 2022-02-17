@@ -22,11 +22,10 @@ void main() {
       Character(actorName: 'brayan', char_Id: 1, nickName: 'hisenberg');
 
   test('should get one character', () async* {
-    // ignore: non_constant_identifier_names
     when(mockOneCharacter.getOneCharacters(characterId))
         // ignore: non_constant_identifier_names
         .thenAnswer((MockOneCharacter) async => Right(characterTest));
-    final result = await usecase.execute(characterId);
+    final result = await usecase(characterId);
     expect(result, Right(characterTest));
     verify(mockOneCharacter.getOneCharacters(characterId));
     verifyNoMoreInteractions(mockOneCharacter);
