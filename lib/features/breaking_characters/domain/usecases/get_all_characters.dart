@@ -14,3 +14,5 @@ class GetAllCharacter implements UseCase<Character, NoParams>{
   }
 
 }
+
+
