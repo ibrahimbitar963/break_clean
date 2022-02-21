@@ -1,3 +1,5 @@
+import 'package:break_clean/core/error/exception.dart';
+import 'package:break_clean/core/error/failures.dart';
 import 'package:break_clean/core/platform/network_info.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_local_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
@@ -16,15 +18,7 @@ class MockRemoteDataSource extends Mock implements CharacterRemoteDataSource {}
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
 @GenerateMocks([NetworkInfo])
-// @GenerateMocks([NumberTriviaRemoteDataSource])
-@GenerateMocks([
-  CharacterRemoteDataSource
-], customMocks: [
-  MockSpec<CharacterRemoteDataSource>(
-      as: #MockNumberTriviaRemoteDataSourceForTest,
-      returnNullOnMissingStub: true),
-])
-
+@GenerateMocks([CharacterRemoteDataSource])
 void main() {
   late CharacterRepositoryImpl repositoryImpl;
   late MockLocalDataSource mockLocalDataSource;
@@ -52,33 +46,61 @@ void main() {
       repositoryImpl.getOneCharacters(tCharacterNumber);
       verify(mockNetworkInfo.isConnected);
     });
-    
-    group('device is online', (){
 
-      setUp((){
+    group('device is online', () {
+      setUp(() {
         when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       });
-      test('should return remote data when the call to remote data source is success ',
 
-          ()async{
-        when(mockRemoteDataSource.getOneCharacters(1))
-            .thenAnswer((_)async => tCharacterModel);
+      test(
+          'should return remote data when the call to remote data source is success ',
+          () async {
+        when(mockRemoteDataSource.getOneCharacters(tCharacterNumber))
+            .thenAnswer((_) async => tCharacterModel);
 
-            final result =  await repositoryImpl.getOneCharacters(tCharacterNumber);
-        verify(mockRemoteDataSource.getOneCharacters(1));
+        final result = await repositoryImpl.getOneCharacters(tCharacterNumber);
+        verify(mockRemoteDataSource.getOneCharacters(tCharacterNumber));
         expect(result, equals(Right(tCharacter)));
+      });
+      test(
+          'should cache the data locally when the call to remote data source is success ',
+          () async {
+        when(mockRemoteDataSource.getOneCharacters(tCharacterNumber))
+            .thenAnswer((_) async => tCharacterModel);
 
+        await repositoryImpl.getOneCharacters(tCharacterNumber);
+        verify(mockRemoteDataSource.getOneCharacters(tCharacterNumber));
+        verify(mockLocalDataSource.cachedCharacter(tCharacterModel));
+      });
+      test(
+          'should return server failure data when the call to remote data source is unsuccessful ',
+          () async {
+        when(mockRemoteDataSource.getOneCharacters(tCharacterNumber))
+            .thenThrow(ServerException());
 
-
-          }
-      );
+        final result = await repositoryImpl.getOneCharacters(tCharacterNumber);
+        verify(mockRemoteDataSource.getOneCharacters(tCharacterNumber));
+        verifyNoMoreInteractions(mockLocalDataSource);
+        expect(result, equals(Left(ServerFailure())));
+      });
     });
-
-
-
+    group('device is offline', () {
+      setUp(() {
+        when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
+      });
+      // test(
+      //     'should return last locally cached data when the cached data is present  ',
+      //     () async {
+      //   when(mockLocalDataSource.getLastCharacter())
+      //       .thenAnswer((_) async => tCharacterModel);
+      //   final result = repositoryImpl.getOneCharacters(tCharacterNumber);
+      //   //   verifyNoMoreInteractions(mockRemoteDataSource);
+      //   verify(mockLocalDataSource.getLastCharacter());
+      //   expect(result, Right(tCharacterNumber));
+      // });
+    });
   });
 }
-
 
 // group('device online', ()async* {
 //

@@ -38,6 +38,8 @@ dependencies:
   mockito: ^5.0.6
   dio: ^4.0.0
   flutter_offline: ^2.0.0
+  internet_connection_checker: ^0.0.1+2
+
 
 
 

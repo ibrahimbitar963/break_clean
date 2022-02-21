@@ -6,7 +6,7 @@ abstract class CharacterLocalDataSource {
   /// the user had an internet connection.
   /// Throws [NoLocalDataException] if no cached data is present.
 
-Future<CharacterModel> getLastCharacter();
-Future <void> cachedCharacter(CharacterModel characterToCache);
+Future<CharacterModel>? getLastCharacter();
+Future <void>? cachedCharacter(CharacterModel characterToCache);
 
 }
