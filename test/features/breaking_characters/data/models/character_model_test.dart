@@ -18,17 +18,12 @@ void main() {
     test('should return a valid model when the json number is ant integer',
         () async* {
       //arrange
-
       final Map< String , dynamic > jsonMap = jsonDecode(
         fixture('characters.json'),
       );
-
       //act
-
       final result = CharacterModel.fromJson(jsonMap);
-
       //assert
-
       expect(result, tCharacterModel);
     });
   });

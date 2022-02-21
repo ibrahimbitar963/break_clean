@@ -7,7 +7,7 @@ abstract class CharacterRemoteDataSource {
   /// get only one character
   /// Throws a [ServerException] for all error codes.
   ///
-  Future<CharacterModel> getOneCharacters(int id);
+  Future<CharacterModel>? getOneCharacters(int id);
   /// Calls the  https://www.breakingbadapi.com/api/{characters} endpoint.
   ///get all character
   /// Throws a [ServerException] for all error codes.

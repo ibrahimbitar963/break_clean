@@ -1,6 +1,6 @@
 
 
 
-abstract class NetworkInfo {
-  Future<bool> get isConnected;
+  abstract class NetworkInfo {
+  Future<bool>? get isConnected;
 }

@@ -12,7 +12,7 @@ class GetOneCharacter implements UseCase<Character,Params> {
 @override
   Future<Either<Failure, Character>> call(Params params)
   async {
-    return await repository.getOneCharacters(params.charId);
+    return await repository.getOneCharacters(params.charId)!;
   }
 }
 class Params extends Equatable  {
