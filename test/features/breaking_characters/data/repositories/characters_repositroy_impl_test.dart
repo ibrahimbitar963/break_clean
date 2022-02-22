@@ -1,6 +1,6 @@
 import 'package:break_clean/core/error/exception.dart';
 import 'package:break_clean/core/error/failures.dart';
-import 'package:break_clean/core/platform/network_info.dart';
+import 'package:break_clean/core/network/network_info.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_local_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
