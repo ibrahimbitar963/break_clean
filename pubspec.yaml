@@ -35,7 +35,7 @@ dependencies:
   http: ^0.13.1
   dartz: ^0.10.0
   shared_preferences: ^2.0.6
-  mockito: ^5.0.6
+  mockito: ^5.0.15
   dio: ^4.0.0
   flutter_offline: ^2.0.0
   internet_connection_checker: ^0.0.1+2

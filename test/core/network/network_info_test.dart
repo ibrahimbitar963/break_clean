@@ -14,14 +14,14 @@ void main(){
   
   group('is connected', (){
     test('should forward the call to data connection checker', ()async*{
-
+      final tHasConnectionFuture = Future.value(true);
       when(mockDataConnectionChecker!.hasConnection).
-      thenAnswer((_) async=> true);
+      thenAnswer((_) => tHasConnectionFuture);
 
 
       final result = networkInfoImpl!.isConnected;
       verify(mockDataConnectionChecker!.hasConnection);
-      expect(result, true);
+      expect(result, tHasConnectionFuture);
 
     });
   });
