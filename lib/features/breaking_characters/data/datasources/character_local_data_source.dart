@@ -8,12 +8,11 @@ abstract class CharacterLocalDataSource {
   /// the user had an internet connection.
   /// Throws [NoLocalDataException] if no cached data is present.
 
-Future<CharacterModel>? getLastCharacter();
-Future <void>? cachedCharacter(CharacterModel characterToCache);
-
-
-
+    Future<CharacterModel>? getLastCharacter();
+    Future <void>? cachedCharacter(CharacterModel characterToCache);
 }
+ const CACHED_CHARACTER = 'CACHED_CHARACTER';
+
 class CharacterLocalDataSourceImpl implements CharacterLocalDataSource{
  late final SharedPreferences sharedPreferences;
  CharacterLocalDataSourceImpl({ required this.sharedPreferences});
@@ -26,7 +25,7 @@ class CharacterLocalDataSourceImpl implements CharacterLocalDataSource{
   @override
   Future<CharacterModel>? getLastCharacter() {
 
-    final jsonString = sharedPreferences.getString('CACHED_CHARACTER');
+    final jsonString = sharedPreferences.getString(CACHED_CHARACTER);
      return Future.value(CharacterModel.fromJson(jsonDecode(jsonString!)));
 
   }
