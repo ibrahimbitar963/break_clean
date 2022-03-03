@@ -41,7 +41,7 @@ void main() {
         char_Id: 1, nickName: 'Heisenberg', actorName: 'Walter White');
 
     final Character tCharacter = tCharacterModel;
-    test('checkkkkkkkkkkkkk if the device online', () async* {
+    test('check if the device online', () async* {
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       repositoryImpl.getOneCharacters(tCharacterNumber);
       verify(mockNetworkInfo.isConnected);

@@ -4,15 +4,13 @@ import 'package:break_clean/features/breaking_characters/domain/entites/characte
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class GetAllCharacter implements UseCase<Character, NoParams>{
+class GetAllCharacter implements UseCase<Character, NoParams> {
   final CharactersRepository repository;
+
   GetAllCharacter(this.repository);
+
   @override
-  Future<Either<Failure, Character>> call(NoParams params)
-  async {
-   return await repository.getAllCharacters();
+  Future<Either<Failure, Character>> call(NoParams params) async {
+    return await repository.getAllCharacters()!;
   }
-
 }
-
-

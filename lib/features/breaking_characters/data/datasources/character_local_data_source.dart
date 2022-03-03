@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:break_clean/core/error/exception.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,7 +24,6 @@ class CharacterLocalDataSourceImpl implements CharacterLocalDataSource{
 
   @override
   Future<CharacterModel>? getLastCharacter() {
-
     var jsonString = sharedPreferences.getString(CACHED_CHARACTER);
     if(jsonString != null){
       return Future.value(CharacterModel.fromJson(jsonDecode(jsonString)));
@@ -33,9 +31,5 @@ class CharacterLocalDataSourceImpl implements CharacterLocalDataSource{
     }else {
       throw CacheException();
     }
-
-
   }
-
-
 }

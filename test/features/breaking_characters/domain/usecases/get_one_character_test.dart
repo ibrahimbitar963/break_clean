@@ -10,22 +10,22 @@ class MockCharacter extends Mock implements CharactersRepository {}
 
 @GenerateMocks([CharactersRepository])
 void main() {
-  late GetOneCharacter usecase;
+  late GetOneCharacter useCase;
   late MockCharacter mockCharacter;
 
   setUp(() {
     mockCharacter = MockCharacter();
-    usecase = GetOneCharacter(MockCharacter());
+    useCase = GetOneCharacter(MockCharacter());
   });
   final characterId = 1;
   final characterTest =
       Character(actorName: 'brayan', char_Id: 1, nickName: 'hisenberg');
 
   test('should get one character', () async* {
-    when(mockCharacter.getOneCharacters(characterId))
-        // ignore: non_constant_identifier_names
-        .thenAnswer((MockOneCharacter) async => Right(characterTest));
-    final result = await usecase(Params(charId:characterId));
+    when(mockCharacter.getOneCharacters(any))
+
+        .thenAnswer((_) async => Right(characterTest));
+    final result = await useCase(Params(charId:characterId));
     expect(result, Right(characterTest));
     verify(mockCharacter.getOneCharacters(characterId));
     verifyNoMoreInteractions(mockCharacter);
