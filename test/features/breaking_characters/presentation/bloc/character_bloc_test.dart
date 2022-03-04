@@ -1,3 +1,4 @@
+import 'package:break_clean/core/error/failures.dart';
 import 'package:break_clean/core/usecases/usecases.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
@@ -64,39 +65,39 @@ class MockGetAllCharacter extends Mock implements GetAllCharacter{}
                   //act
                   characterBloc.add(GetAllCharacterevent());
                 });
-            // test('should emits [Loading, Error] when getting data fails', () async* {
-            //   //arrange
-            //   when(mockGetRandomNumberTrivia(any))
-            //       .thenAnswer((_) async => Left(ServerFailure()));
-            //
-            //   //assert later
-            //   final expeted = [
-            //     Empty(),
-            //     Loading(),
-            //     Error(message: SERVER_FAILURE_MESSAGE)
-            //   ];
-            //   expectLater(bloc, emitsInOrder(expeted));
-            //   //act
-            //   bloc.add(GetTriviaForRandomNumber());
-            // });
-            //
-            // test(
-            //     'should emits [Loading, Error] with a proper message for the error when getting data fails',
-            //         () async* {
-            //       //arrange
-            //       when(mockGetRandomNumberTrivia(any))
-            //           .thenAnswer((_) async => Left(CacheFailure()));
-            //
-            //       //assert later
-            //       final expeted = [
-            //         Empty(),
-            //         Loading(),
-            //         Error(message: CACHE_FAILURE_MESSAGE)
-            //       ];
-            //       expectLater(bloc, emitsInOrder(expeted));
-            //       //act
-            //       bloc.add(GetTriviaForRandomNumber());
-            //     });
+            test('should emits [Loading, Error] when getting data fails', () async* {
+              //arrange
+              when(mockGetAllCharacter(any))
+                  .thenAnswer((_) async => Left(ServerFailure()));
+
+              //assert later
+              final expeted = [
+                Empty(),
+                Loading(),
+                Error(message: SERVER_FAILURE_MESSAGE)
+              ];
+              expectLater(characterBloc, emitsInOrder(expeted));
+              //act
+              characterBloc.add(GetAllCharacterevent());
+            });
+
+            test(
+                'should emits [Loading, Error] with a proper message for the error when getting data fails',
+                    () async* {
+                  //arrange
+                  when(mockGetAllCharacter(any))
+                      .thenAnswer((_) async => Left(CacheFailure()));
+
+                  //assert later
+                  final expeted = [
+                    Empty(),
+                    Loading(),
+                    Error(message: CACHE_FAILURE_MESSAGE)
+                  ];
+                  expectLater(characterBloc, emitsInOrder(expeted));
+                  //act
+                  characterBloc.add(GetAllCharacterevent());
+                });
           });
 
 }
