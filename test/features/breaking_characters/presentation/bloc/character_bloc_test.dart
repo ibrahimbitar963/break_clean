@@ -52,18 +52,18 @@ class MockGetAllCharacter extends Mock implements GetAllCharacter{}
               //assert
               verify(mockGetAllCharacter(NoParams()));
             });
-            // test('should emits [Loading, Loaded] when data is gotten successfully',
-            //         () async* {
-            //       //arrange
-            //       when(mockGetRandomNumberTrivia(any))
-            //           .thenAnswer((_) async => Right(tNumberTrivia));
-            //
-            //       //assert later
-            //       final expeted = [Empty(), Loading(), Loaded(trivia: tNumberTrivia)];
-            //       expectLater(bloc, emitsInOrder(expeted));
-            //       //act
-            //       bloc.add(GetTriviaForRandomNumber());
-            //     });
+            test('should emits [Loading, Loaded] when data is gotten successfully',
+                    () async* {
+                  //arrange
+                  when(mockGetAllCharacter(any))
+                      .thenAnswer((_) async => Right(tCharacter));
+
+                  //assert later
+                  final expeted = [Empty(), Loading(), Loaded(character: tCharacter)];
+                  expectLater(characterBloc, emitsInOrder(expeted));
+                  //act
+                  characterBloc.add(GetAllCharacterevent());
+                });
             // test('should emits [Loading, Error] when getting data fails', () async* {
             //   //arrange
             //   when(mockGetRandomNumberTrivia(any))
