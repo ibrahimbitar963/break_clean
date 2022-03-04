@@ -31,4 +31,7 @@ void main() {
     verify(mockCharacter.getAllCharacters());
     verifyNoMoreInteractions(mockCharacter);
   });
+
+
+
 }

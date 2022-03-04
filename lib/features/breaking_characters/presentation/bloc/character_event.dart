@@ -6,6 +6,9 @@ abstract class CharacterEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class getAllCharacter extends CharacterEvent{}
+class GetAllCharacterevent extends CharacterEvent{
+  // late final Character character;
+  // getAllCharacter({required this.character});
+}
 
 

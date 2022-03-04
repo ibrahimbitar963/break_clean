@@ -11,10 +11,11 @@ class Empty extends CharacterState {
 
 }
 class Loading extends CharacterState {}
-class CharachtersLoaded extends CharacterState {
+class Loaded extends CharacterState {
 
-  late final List<Character> character;
-  CharachtersLoaded({required this.character}):super([character]);
+ // late final List<Character> character;
+  late final Character character;
+  Loaded({required this.character}):super([character]);
 }
 class Error extends CharacterState{
 
