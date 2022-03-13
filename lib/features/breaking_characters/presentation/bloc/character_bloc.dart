@@ -27,7 +27,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
             final failureOrCharacter = await getAllCharacter(NoParams());
             failureOrCharacter.fold((failure) {
               emit(Error(message: _mapFailureToMessage(failure)));
-            }, (trivia) {
+            }, (character) {
               emit(Loaded(character:character ));
             });
 
