@@ -1,7 +1,9 @@
 import 'package:break_clean/features/breaking_characters/presentation/pages/characters_page.dart';
 import 'package:flutter/material.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'approuter.dart';
+import 'features/breaking_characters/presentation/bloc/character_bloc.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -16,13 +18,18 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
+
   const MyApp({Key? key, required this.appRouter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: appRouter.generateRoute,
+    return BlocProvider<CharacterBloc>(
+      create: (context) => di.sl<CharacterBloc>(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: CharactersPage(),
+        //onGenerateRoute: appRouter.generateRoute,
+      ),
     );
   }
 }

@@ -14,8 +14,8 @@ class Loading extends CharacterState {}
 class Loaded extends CharacterState {
 
  // late final List<Character> character;
-  late final Character character;
-  Loaded({required this.character}):super([character]);
+  List<Character> characters = [];
+  Loaded( this.characters):super([characters]);
 }
 class Error extends CharacterState{
 

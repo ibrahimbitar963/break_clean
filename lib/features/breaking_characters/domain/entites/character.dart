@@ -24,3 +24,19 @@ Character({required this.actorName,required this.char_Id,
 
 
 }
+
+// class CharachtersCubit extends Cubit<CharachtersState> {
+//   late CharacterRepo characterRepo;
+//   late QuoteRepo quoteRepo;
+//   List<Character> characters= [];
+//   CharachtersCubit( this.characterRepo,this.quoteRepo) : super(CharachtersInitial());
+//
+//
+//
+//   List<Character> getAllCharacter(){
+//     characterRepo.getAllCharacters().then((characters) {
+//       emit(CharachtersLoaded(characters));
+//       this.characters = characters;
+//     });
+//     return characters;
+//   }

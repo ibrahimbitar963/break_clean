@@ -100,8 +100,20 @@ class _CharactersPageState extends State<CharactersPage> {
           // allCharacters = (state);
           print('loaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaded');
           return buildLoadedListWidgets();
-        } else {
+        } else  if (state is Loading) {
           print('looooooooooooooooooooooodinnnnnnnnng');
+          return showLoadingIndicator();
+        }
+        else  if( state is Empty){
+          print('empty');
+          return showLoadingIndicator();
+          }
+        else  if( state is Error){
+          print('erorr');
+          return showLoadingIndicator();
+        }
+        else {
+          print('noooooooooooooooosttate');
           return showLoadingIndicator();
         }
       },
