@@ -23,7 +23,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
   late CharactersRepository charactersRepository;
   List<Character> characterss = [];
     GetAllCharacterEvent? getAllCharacter;
-  CharacterState get initialState => Empty();
+//  CharacterState get initialState => Empty();
   //late final Character character;
 
   CharacterBloc() : super(Empty()) {
@@ -32,7 +32,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
       print('evennnnnnnnnnnnt');
 
 
-      // Future<Either<Failure, List<Character>>>? getAllCharacter()async{
+      // Future<Either<Failure, List<Character>>>? a()async{
       //  await charactersRepository.getAllCharacters()!.then((characters) {
       //    Right(characters);
       //    print(characters.length());

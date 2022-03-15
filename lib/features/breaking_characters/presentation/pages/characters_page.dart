@@ -114,11 +114,14 @@ class _CharactersPageState extends State<CharactersPage> {
         }
         else  if( state is Empty){
           print('empty');
-
           context.read<CharacterBloc>().add(GetAllCharacterEvent());
-          print('empty');
+          allCharacters = (state).characters;
+          // print(state.characters.length);
+          // print(allCharacters.length);
 
-          return showLoadingIndicator();
+          return buildLoadedListWidgets();
+
+
           }
         else  if( state is Error){
           print('error');

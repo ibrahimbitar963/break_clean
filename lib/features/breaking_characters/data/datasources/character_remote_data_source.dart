@@ -29,11 +29,12 @@ class CharacterRemoteDataSourceImpl implements CharacterRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-      List<CharacterModel> characters = new List<CharacterModel>.from(json
+      List<CharacterModel> characters =  List<CharacterModel>.from(json
           .decode(response.body)
           .map((data) => CharacterModel.fromJson(data))).toList();
       characters.forEach((element) {
-        print(element.nickName);
+      //  print(element.nickName);
+      //  print(characters.length);
       });
 
       return characters;
