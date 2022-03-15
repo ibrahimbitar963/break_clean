@@ -90,7 +90,7 @@ class _CharactersPageState extends State<CharactersPage> {
   @override
   void initState() {
     super.initState();
-    di.sl<CharacterRemoteDataSource>().getAllCharacters();
+    //di.sl<CharacterRemoteDataSource>().getAllCharacters();
   }
 
   Widget buildBlocWidget() {

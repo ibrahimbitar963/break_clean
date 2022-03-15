@@ -20,7 +20,7 @@ class CharacterRepositoryImpl implements CharactersRepository {
       required this.localDataSource});
 
   @override
-  Future<Either<Failure, Character>> getAllCharacters() {
+  Future<Either<Failure, List<Character>>> getAllCharacters() {
     // TODO: implement getAllCharacters
     throw UnimplementedError();
   }

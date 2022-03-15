@@ -15,7 +15,8 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //   //! Features
   //   //Bloc
-  sl.registerFactory(() => CharacterBloc(getAllCharacter: sl()));
+  // sl.registerFactory(() => CharacterBloc(getAllCharacter: sl()));
+ // sl.registerFactory(() => CharacterBloc(getAllCharacter: sl()));
   //
   //   // Use cases
   //

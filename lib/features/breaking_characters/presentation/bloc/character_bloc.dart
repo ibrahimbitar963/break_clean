@@ -3,10 +3,13 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:break_clean/core/error/failures.dart';
 import 'package:break_clean/core/usecases/usecases.dart';
+import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:break_clean/injection_container.dart' as di;
 
 part 'character_event.dart';
 part 'character_state.dart';
@@ -18,21 +21,24 @@ const String INVALID_INPUT_FAILURE_MESSAGE =
 
 class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
   late CharactersRepository charactersRepository;
-  List<Character> characters = [];
-  final GetAllCharacter getAllCharacter;
+  List<Character> characterss = [];
+  late GetAllCharacterEvent getAllCharacter;
   CharacterState get initialState => Empty();
   late final Character character;
 
-  CharacterBloc({required this.getAllCharacter}) : super(Empty()) {
-    on<GetAllCharacter>((event, emit) async {
+  CharacterBloc() : super(Empty()) {
+    on<GetAllCharacterEvent>((event, emit) async {
+      di.sl<CharacterRemoteDataSource>().getAllCharacters();
 
-      Future<List<Character>> getAllCharacter()async{
-       await charactersRepository.getAllCharacters()!.then((characters) {
-          emit(Loaded(characters));
-          this.characters = characters;
-        });
-        return characters;
-      }
+      // Future<Either<Failure, List<Character>>>? getAllCharacter()async{
+      //  await charactersRepository.getAllCharacters()!.then((characters) {
+      //    Right(characters);
+      //    print(characters.length());
+      //    this.characterss = characters as List<Character>;
+      //
+      //   });
+      //   return  Right(characterss);
+      // }
     });
     // on<GetAllCharacter>((event, emit) async {
     //   emit(Loading());

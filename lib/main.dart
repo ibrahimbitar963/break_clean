@@ -7,24 +7,27 @@ import 'features/breaking_characters/presentation/bloc/character_bloc.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
+
+
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   print('ssssssssss');
   di.sl<CharacterRemoteDataSource>().getAllCharacters();
   runApp(MyApp(
-    appRouter: AppRouter(),
+  //  appRouter: AppRouter(),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  final AppRouter appRouter;
+//  final AppRouter appRouter;
 
-  const MyApp({Key? key, required this.appRouter}) : super(key: key);
+  const MyApp({Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider<CharacterBloc>(
-      create: (context) => di.sl<CharacterBloc>(),
+      create: (context) => CharacterBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: CharactersPage(),
