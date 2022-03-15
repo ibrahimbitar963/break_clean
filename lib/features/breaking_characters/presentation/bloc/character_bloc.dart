@@ -22,13 +22,15 @@ const String INVALID_INPUT_FAILURE_MESSAGE =
 class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
   late CharactersRepository charactersRepository;
   List<Character> characterss = [];
-  late GetAllCharacterEvent getAllCharacter;
+    GetAllCharacterEvent? getAllCharacter;
   CharacterState get initialState => Empty();
-  late final Character character;
+  //late final Character character;
 
   CharacterBloc() : super(Empty()) {
     on<GetAllCharacterEvent>((event, emit) async {
       di.sl<CharacterRemoteDataSource>().getAllCharacters();
+      print('evennnnnnnnnnnnt');
+
 
       // Future<Either<Failure, List<Character>>>? getAllCharacter()async{
       //  await charactersRepository.getAllCharacters()!.then((characters) {

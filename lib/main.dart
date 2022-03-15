@@ -12,7 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   print('ssssssssss');
-  di.sl<CharacterRemoteDataSource>().getAllCharacters();
+  //di.sl<CharacterRemoteDataSource>().getAllCharacters();
   runApp(MyApp(
   //  appRouter: AppRouter(),
   ));

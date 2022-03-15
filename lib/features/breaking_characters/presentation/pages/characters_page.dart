@@ -1,6 +1,7 @@
 import 'package:break_clean/core/const/colors.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
+import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/characters_item.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,10 @@ class CharactersPage extends StatefulWidget {
 }
 
 class _CharactersPageState extends State<CharactersPage> {
+ final CharacterBloc _exampleBloc = CharacterBloc();
+
+
+
   late List<Character> allCharacters;
   late List<Character> searchedCharacterList;
   bool _isSearching = false;
@@ -90,7 +95,10 @@ class _CharactersPageState extends State<CharactersPage> {
   @override
   void initState() {
     super.initState();
-    //di.sl<CharacterRemoteDataSource>().getAllCharacters();
+   // BlocProvider.of<CharacterBloc>(context).getAllCharacter;
+   //  di.sl<CharacterRemoteDataSource>().getAllCharacters();
+    context.read<CharacterBloc>().add(GetAllCharacterEvent());
+
   }
 
   Widget buildBlocWidget() {
@@ -106,10 +114,14 @@ class _CharactersPageState extends State<CharactersPage> {
         }
         else  if( state is Empty){
           print('empty');
+
+          context.read<CharacterBloc>().add(GetAllCharacterEvent());
+          print('empty');
+
           return showLoadingIndicator();
           }
         else  if( state is Error){
-          print('erorr');
+          print('error');
           return showLoadingIndicator();
         }
         else {
