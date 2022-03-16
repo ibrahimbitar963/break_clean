@@ -1,52 +1,35 @@
 import 'package:break_clean/core/const/colors.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
-import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
-import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
-import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/characters_item.dart';
 import 'package:flutter/material.dart';
-import 'package:break_clean/injection_container.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
-
 import '../../../../injection_container.dart';
 
-class CharactersPage extends StatefulWidget
-{
-
+class CharactersPage extends StatefulWidget {
   @override
   _CharactersPageState createState() => _CharactersPageState();
 }
 
 class _CharactersPageState extends State<CharactersPage> {
-
-  final CharacterBloc _exampleBloc = CharacterBloc();
-
-  late CharacterRemoteDataSourceImpl characterRemoteDataSource= CharacterRemoteDataSourceImpl(client: sl());
-
-
+  late CharacterRemoteDataSourceImpl characterRemoteDataSource =
+      CharacterRemoteDataSourceImpl(client: sl());
   late List<CharacterModel> allCharacters;
   late List<CharacterModel> searchedCharacterList;
   bool _isSearching = false;
   final _searchTextController = TextEditingController();
-  late List<CharacterModel> charmodel=[];
-  Future<List<CharacterModel>> charList() async{
-
+  late List<CharacterModel> charModel = [];
+  Future<List<CharacterModel>> charList() async {
     characterRemoteDataSource.getAllCharacter().then((value) {
       List<CharacterModel> returnList = value;
-
-      //returnList = charmodel;
-      charmodel = returnList;
-      print(charmodel[0].nickName);
-      //print(charmodel)
+      charModel = returnList;
     });
-    //  print(charmodel.length);
-    return charmodel;
+    return charModel;
   }
-  Widget _buildSearchField() {
 
+  Widget _buildSearchField() {
     return TextField(
       autofocus: true,
       controller: _searchTextController,
@@ -66,7 +49,7 @@ class _CharactersPageState extends State<CharactersPage> {
   void addSearchedItemToCharacterList(String searchedCharacter) {
     searchedCharacterList = allCharacters
         .where((character) =>
-        character.nickName.toLowerCase().startsWith(searchedCharacter))
+            character.nickName.toLowerCase().startsWith(searchedCharacter))
         .toList();
     setState(() {});
   }
@@ -118,51 +101,24 @@ class _CharactersPageState extends State<CharactersPage> {
   void initState() {
     super.initState();
     charList();
-    // Future <List<CharacterModel>> getChr =  characterRemoteDataSource.getAllCharacter().then((value) {
-    //   List<CharacterModel> returnList = value;
-    //   print(returnList[0].nickName);
-    // });
-    // characterRemoteDataSourceImpl = CharacterRemoteDataSourceImpl();
-    // BlocProvider.of<CharacterBloc>(context).getAllCharacter;
-    // di.sl<CharacterRemoteDataSource>().getAllCharacter();
-    //di.sl<CharacterRemoteDataSourceImpl>().getAllCharacter();
     context.read<CharacterBloc>().add(GetAllCharacterEvent());
-
   }
 
   Widget buildBlocWidget() {
-    // Future <List<CharacterModel>> getChr =  characterRemoteDataSource.getAllCharacter().then((value) {
-    //   List<CharacterModel> returnList = value;
-    //   return returnList;
-    //   print(returnList[0].nickName);
-    // });
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
         if (state is Loaded) {
-          //  allCharacters = (state).characters;
-          print('loaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaded');
           return buildLoadedListWidgets();
-        } else  if (state is Loading) {
-          print('looooooooooooooooooooooodinnnnnnnnng');
+        } else if (state is Loading) {
           return showLoadingIndicator();
-        }
-        else  if( state is Empty){
-          print('empty');
+        } else if (state is Empty) {
+          showLoadingIndicator();
           context.read<CharacterBloc>().add(GetAllCharacterEvent());
-          allCharacters = charmodel;
-          // print(state.characters.length);
-          // print(allCharacters.length);
-
+          allCharacters = charModel;
           return buildLoadedListWidgets();
-
-
-        }
-        else  if( state is Error){
-          print('error');
+        } else if (state is Error) {
           return showLoadingIndicator();
-        }
-        else {
-          print('noooooooooooooooosttate');
+        } else {
           return showLoadingIndicator();
         }
       },
@@ -229,7 +185,6 @@ class _CharactersPageState extends State<CharactersPage> {
 
   Widget buildAlertWidget() {
     return Center(
-
       child: Container(
         color: Colors.white70,
         child: SingleChildScrollView(
@@ -237,16 +192,18 @@ class _CharactersPageState extends State<CharactersPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('Please check your internet connection'
-                , style: TextStyle(
+              Text(
+                'Please check your internet connection',
+                style: TextStyle(
                     color: MyColors.myYellow,
                     fontSize: 18,
-                    fontWeight: FontWeight.bold
-
-                ),),
-              SizedBox(height: 20,),
-              Image.asset('assets/images/notify.png',
-
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Image.asset(
+                'assets/images/notify.png',
               ),
             ],
           ),
@@ -264,23 +221,25 @@ class _CharactersPageState extends State<CharactersPage> {
         actions: _buildAppBarActions(),
         leading: _isSearching
             ? BackButton(
-          color: MyColors.myGrey,
-        )
+                color: MyColors.myGrey,
+              )
             : Container(),
       ),
-      body: OfflineBuilder(connectivityBuilder: (BuildContext context,
+      body: OfflineBuilder(
+        connectivityBuilder: (
+          BuildContext context,
           ConnectivityResult connectivity,
-          Widget child,) {
-        final bool connected = connectivity != ConnectivityResult.none;
-        if (connected) {
-          return buildBlocWidget();
-        } else {
-          return buildAlertWidget();
-        }
-      },
+          Widget child,
+        ) {
+          final bool connected = connectivity != ConnectivityResult.none;
+          if (connected) {
+            return buildBlocWidget();
+          } else {
+            return buildAlertWidget();
+          }
+        },
         child: showLoadingIndicator(),
       ),
-
     );
   }
 }

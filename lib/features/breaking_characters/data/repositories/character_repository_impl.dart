@@ -6,51 +6,38 @@ import 'package:break_clean/features/breaking_characters/data/models/character_m
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:dartz/dartz.dart';
+
 typedef Future<List<CharacterModel>> _ConcreteOrRandomChooser();
+
 class CharacterRepositoryImpl implements CharactersRepository {
   late final CharacterRemoteDataSource remoteDataSource;
 
-  // late final CharacterLocalDataSource localDataSource;
-
   late final NetworkInfo networkInfo;
 
-  CharacterRepositoryImpl({required this.networkInfo,
+  CharacterRepositoryImpl({
+    required this.networkInfo,
     required this.remoteDataSource,
-    });
+  });
 
   @override
   Future<Either<Failure, List<Character>>> getAllCharacters() async {
-    return await _getTrivia(() {
+    return await getTrivia(() {
       return remoteDataSource.getAllCharacter();
     });
   }
 
-  @override
-
-
-  Future<Either<Failure, List<Character>>> _getTrivia(
+  Future<Either<Failure, List<Character>>> getTrivia(
       _ConcreteOrRandomChooser getConcreteOrRandom) async {
-     if (await networkInfo.isConnected!) {
-    try {
-      final remoteTrivia = await getConcreteOrRandom();
-      remoteDataSource.getAllCharacter();
-      return Right(remoteTrivia);
-    } on ServerException {
-      return Left(ServerFailure());
+    if (await networkInfo.isConnected!) {
+      try {
+        final remoteTrivia = await getConcreteOrRandom();
+        remoteDataSource.getAllCharacter();
+        return Right(remoteTrivia);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(CacheFailure());
     }
-    // }
-    // {
-    //   try {
-    //     final localTrivia = await localDataSource.getLastCharacter();
-    //     return Right(localTrivia!);
-    //   } on CacheException {
-    //     return Left(CacheFailure());
-    //   }
-    // }
-    // }
-  }else {
-       return Left(CacheFailure());
-     }
-     }
-
+  }
 }

@@ -9,7 +9,7 @@ import '../../../../fixture/fixture_reader.dart';
 
 void main() {
   final tCharacterModel = CharacterModel(
-      char_Id: 1, nickName: 'Walter White', actorName: 'Heisenberg');
+      charID: 1, nickName: 'Walter White', actorName: 'Heisenberg');
   test('should get character model', () async* {
     expect(tCharacterModel, isA<Character>());
   });

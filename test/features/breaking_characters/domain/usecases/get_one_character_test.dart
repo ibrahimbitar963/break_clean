@@ -19,7 +19,7 @@ void main() {
   });
   final characterId = 1;
   final characterTest =
-      Character(actorName: 'brayan', char_Id: 1, nickName: 'hisenberg');
+      Character(actorName: 'brayan', charID: 1, nickName: 'hisenberg');
 
   test('should get one character', () async* {
     when(mockCharacter.getOneCharacters(any))

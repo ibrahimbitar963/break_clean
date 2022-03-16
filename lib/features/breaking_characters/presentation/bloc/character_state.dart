@@ -9,12 +9,11 @@ abstract class CharacterState extends Equatable {
 
 class Empty extends CharacterState {
   List<CharacterModel> characters = [];
-  //Empty( this.characters);
 }
 class Loading extends CharacterState {}
 class Loaded extends CharacterState {
 
- // late final List<Character> character;
+
   List<Character> characters = [];
   Loaded( this.characters):super([characters]);
 }

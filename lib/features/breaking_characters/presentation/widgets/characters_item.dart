@@ -1,6 +1,5 @@
 import 'package:break_clean/core/const/colors.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +20,7 @@ class CharactersItem extends StatelessWidget {
        // onTap:()=> Navigator.pushNamed(context, charactersDetailsScreen,arguments: character),
         child: GridTile(
           child: Hero(
-            tag: character.char_Id,
+            tag: character.charID,
             child: Container(
               width: double.infinity,
               height: double.infinity,

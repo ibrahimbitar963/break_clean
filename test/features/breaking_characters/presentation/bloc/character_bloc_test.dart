@@ -40,7 +40,7 @@ class MockGetAllCharacter extends Mock implements GetAllCharacter{}
   });
 
           group('Get AllCharacter', () {
-            final tCharacter = CharacterModel(char_Id: 1, nickName: 'walter white', actorName: 'brayan cranston');
+            final tCharacter = CharacterModel(charID: 1, nickName: 'walter white', actorName: 'brayan cranston');
 
             test('should get data from the get all usecase', () async* {
               //arrange

@@ -7,8 +7,7 @@ abstract class CharacterEvent extends Equatable {
 }
 
 class GetAllCharacterEvent extends CharacterEvent{
-  // late final Character character;
-  // getAllCharacter({required this.character});
+
 }
 
 

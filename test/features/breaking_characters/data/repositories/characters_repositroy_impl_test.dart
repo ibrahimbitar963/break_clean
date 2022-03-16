@@ -38,7 +38,7 @@ void main() {
   group('get character', () {
     final tCharacterNumber = 1;
     final tCharacterModel = CharacterModel(
-        char_Id: 1, nickName: 'Heisenberg', actorName: 'Walter White');
+        charID: 1, nickName: 'Heisenberg', actorName: 'Walter White');
 
     final Character tCharacter = tCharacterModel;
     test('check if the device online', () async* {

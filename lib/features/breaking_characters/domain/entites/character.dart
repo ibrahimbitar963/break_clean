@@ -1,42 +1,36 @@
-
-
 import 'package:equatable/equatable.dart';
 
-class Character extends Equatable{
-  late int char_Id;
-  late String nickName;
-  late String image;
-  late List<dynamic> jobs;
-  late String StatusIfDeadOrAlive;
-  late List<dynamic> appearance;
-  late String actorName;
-  late String category;
-  late List<dynamic> better_call_saul_appearance;
+class Character extends Equatable {
+  late final int charID;
+  late final String nickName;
+  late final String image;
+  late final List<dynamic> jobs;
+  late final String statusIfDeadOrAlive;
+  late final List<dynamic> appearance;
+  late final String actorName;
+  late final String category;
+  late final List<dynamic> betterCallSaulAppearance;
 
-Character({required this.actorName,required this.char_Id,
- required this.nickName,required this.better_call_saul_appearance,required this.StatusIfDeadOrAlive,
-  required this.appearance,required this.category,required this.jobs,required this.image});
+  Character(
+      {required this.actorName,
+      required this.charID,
+      required this.nickName,
+      required this.betterCallSaulAppearance,
+      required this.statusIfDeadOrAlive,
+      required this.appearance,
+      required this.category,
+      required this.jobs,
+      required this.image});
   @override
-  List<Object> get props => [char_Id, nickName,actorName,better_call_saul_appearance,StatusIfDeadOrAlive,appearance,category,jobs,image];
-
-
-
-
-
+  List<Object> get props => [
+        charID,
+        nickName,
+        actorName,
+        betterCallSaulAppearance,
+        statusIfDeadOrAlive,
+        appearance,
+        category,
+        jobs,
+        image
+      ];
 }
-
-// class CharachtersCubit extends Cubit<CharachtersState> {
-//   late CharacterRepo characterRepo;
-//   late QuoteRepo quoteRepo;
-//   List<Character> characters= [];
-//   CharachtersCubit( this.characterRepo,this.quoteRepo) : super(CharachtersInitial());
-//
-//
-//
-//   List<Character> getAllCharacter(){
-//     characterRepo.getAllCharacters().then((characters) {
-//       emit(CharachtersLoaded(characters));
-//       this.characters = characters;
-//     });
-//     return characters;
-//   }

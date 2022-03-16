@@ -1,4 +1,3 @@
-import 'package:break_clean/features/breaking_characters/data/datasources/character_local_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
@@ -13,30 +12,32 @@ import 'features/breaking_characters/domain/repositories/characters_repository.d
 
 final sl = GetIt.instance;
 Future<void> init() async {
-  //   //! Features
-  //   //Bloc
+
+
+  //! Features
+
+  // Bloc
    sl.registerFactory(() => CharacterBloc());
- // sl.registerFactory(() => CharacterBloc(getAllCharacter: sl()));
-  //
-  //   // Use cases
+
+
+   // Use cases
 
   sl.registerLazySingleton(() => GetAllCharacter(sl()));
-  //   // Repository
+  // Repository
 
   sl.registerLazySingleton<CharactersRepository>(() =>
       CharacterRepositoryImpl(
       networkInfo: sl(), remoteDataSource: sl()));
-  //   // Data sources
+  // Data sources
   sl.registerLazySingleton<CharacterRemoteDataSource>(
         () => CharacterRemoteDataSourceImpl(client: sl()));
-  // sl.registerLazySingleton<CharacterLocalDataSource>(
-  //   () => CharacterLocalDataSourceImpl(sharedPreferences: sl()),
-  // );
-  // //! Core
+
+  //! Core
 
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
   //! External
+
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => http.Client());

@@ -20,7 +20,7 @@ void main() {
     usecase = GetAllCharacter(MockCharacter());
   });
   final characterTest =
-  Character(actorName: 'brayan', char_Id: 1, nickName: 'hisenberg');
+  Character(actorName: 'brayan', charID: 1, nickName: 'hisenberg');
 
   test('should get character', () async* {
     when(mockCharacter.getAllCharacters())
