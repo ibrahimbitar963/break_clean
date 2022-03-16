@@ -22,29 +22,29 @@ class CharactersPage extends StatefulWidget
 
 class _CharactersPageState extends State<CharactersPage> {
 
- final CharacterBloc _exampleBloc = CharacterBloc();
+  final CharacterBloc _exampleBloc = CharacterBloc();
 
-   late CharacterRemoteDataSourceImpl characterRemoteDataSource= CharacterRemoteDataSourceImpl(client: sl());
+  late CharacterRemoteDataSourceImpl characterRemoteDataSource= CharacterRemoteDataSourceImpl(client: sl());
 
 
- late List<CharacterModel> allCharacters;
+  late List<CharacterModel> allCharacters;
   late List<CharacterModel> searchedCharacterList;
   bool _isSearching = false;
   final _searchTextController = TextEditingController();
- late List<CharacterModel> charmodel=[];
-    Future<List<CharacterModel>> charList() async{
+  late List<CharacterModel> charmodel=[];
+  Future<List<CharacterModel>> charList() async{
 
-     characterRemoteDataSource.getAllCharacter().then((value) {
-     List<CharacterModel> returnList = value;
+    characterRemoteDataSource.getAllCharacter().then((value) {
+      List<CharacterModel> returnList = value;
 
-     //returnList = charmodel;
-     charmodel = returnList;
-     print(charmodel[0].nickName);
-     //print(charmodel)
-  });
-   //  print(charmodel.length);
+      //returnList = charmodel;
+      charmodel = returnList;
+      print(charmodel[0].nickName);
+      //print(charmodel)
+    });
+    //  print(charmodel.length);
     return charmodel;
-}
+  }
   Widget _buildSearchField() {
 
     return TextField(
@@ -122,8 +122,8 @@ class _CharactersPageState extends State<CharactersPage> {
     //   List<CharacterModel> returnList = value;
     //   print(returnList[0].nickName);
     // });
-   // characterRemoteDataSourceImpl = CharacterRemoteDataSourceImpl();
-   // BlocProvider.of<CharacterBloc>(context).getAllCharacter;
+    // characterRemoteDataSourceImpl = CharacterRemoteDataSourceImpl();
+    // BlocProvider.of<CharacterBloc>(context).getAllCharacter;
     // di.sl<CharacterRemoteDataSource>().getAllCharacter();
     //di.sl<CharacterRemoteDataSourceImpl>().getAllCharacter();
     context.read<CharacterBloc>().add(GetAllCharacterEvent());
@@ -139,24 +139,24 @@ class _CharactersPageState extends State<CharactersPage> {
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
         if (state is Loaded) {
-         //  allCharacters = (state).characters;
+          //  allCharacters = (state).characters;
           print('loaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaded');
           return buildLoadedListWidgets();
         } else  if (state is Loading) {
           print('looooooooooooooooooooooodinnnnnnnnng');
           return showLoadingIndicator();
         }
-            else  if( state is Empty){
-        print('empty');
-        context.read<CharacterBloc>().add(GetAllCharacterEvent());
-        allCharacters = charmodel;
-        // print(state.characters.length);
-        // print(allCharacters.length);
+        else  if( state is Empty){
+          print('empty');
+          context.read<CharacterBloc>().add(GetAllCharacterEvent());
+          allCharacters = charmodel;
+          // print(state.characters.length);
+          // print(allCharacters.length);
 
-        return buildLoadedListWidgets();
+          return buildLoadedListWidgets();
 
 
-          }
+        }
         else  if( state is Error){
           print('error');
           return showLoadingIndicator();
