@@ -11,6 +11,6 @@ class GetAllCharacter implements UseCase<Character, NoParams> {
 
   @override
   Future<Either<Failure, List<Character>>> call(NoParams params) async {
-    return await repository.getAllCharacters()!;
+    return await repository.getAllCharacters();
   }
 }

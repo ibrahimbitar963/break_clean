@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:break_clean/core/error/failures.dart';
 import 'package:break_clean/core/usecases/usecases.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
+import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
@@ -21,15 +22,20 @@ const String INVALID_INPUT_FAILURE_MESSAGE =
 
 class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
   late CharactersRepository charactersRepository;
-  List<Character> characterss = [];
+  List<CharacterModel>? characterss ;
     GetAllCharacterEvent? getAllCharacter;
 //  CharacterState get initialState => Empty();
   //late final Character character;
 
   CharacterBloc() : super(Empty()) {
+
     on<GetAllCharacterEvent>((event, emit) async {
-      di.sl<CharacterRemoteDataSource>().getAllCharacters();
+
+   //   characterss =   di.sl<CharacterRemoteDataSource>().getAllCharacters() as List<CharacterModel>;
       print('evennnnnnnnnnnnt');
+   //    print(characterss!.length);
+   // // List <CharacterModel> =
+
 
 
       // Future<Either<Failure, List<Character>>>? a()async{

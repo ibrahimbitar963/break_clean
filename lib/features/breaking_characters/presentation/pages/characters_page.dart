@@ -1,6 +1,8 @@
 import 'package:break_clean/core/const/colors.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
+import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
+import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/characters_item.dart';
@@ -9,22 +11,42 @@ import 'package:break_clean/injection_container.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 
-class CharactersPage extends StatefulWidget {
+import '../../../../injection_container.dart';
+
+class CharactersPage extends StatefulWidget
+{
+
   @override
   _CharactersPageState createState() => _CharactersPageState();
 }
 
 class _CharactersPageState extends State<CharactersPage> {
+
  final CharacterBloc _exampleBloc = CharacterBloc();
 
+   late CharacterRemoteDataSourceImpl characterRemoteDataSource= CharacterRemoteDataSourceImpl(client: sl());
 
 
-  late List<Character> allCharacters;
-  late List<Character> searchedCharacterList;
+ late List<CharacterModel> allCharacters;
+  late List<CharacterModel> searchedCharacterList;
   bool _isSearching = false;
   final _searchTextController = TextEditingController();
+ late List<CharacterModel> charmodel=[];
+    Future<List<CharacterModel>> charList() async{
 
+     characterRemoteDataSource.getAllCharacter().then((value) {
+     List<CharacterModel> returnList = value;
+
+     //returnList = charmodel;
+     charmodel = returnList;
+     print(charmodel[0].nickName);
+     //print(charmodel)
+  });
+   //  print(charmodel.length);
+    return charmodel;
+}
   Widget _buildSearchField() {
+
     return TextField(
       autofocus: true,
       controller: _searchTextController,
@@ -95,31 +117,43 @@ class _CharactersPageState extends State<CharactersPage> {
   @override
   void initState() {
     super.initState();
+    charList();
+    // Future <List<CharacterModel>> getChr =  characterRemoteDataSource.getAllCharacter().then((value) {
+    //   List<CharacterModel> returnList = value;
+    //   print(returnList[0].nickName);
+    // });
+   // characterRemoteDataSourceImpl = CharacterRemoteDataSourceImpl();
    // BlocProvider.of<CharacterBloc>(context).getAllCharacter;
-   //  di.sl<CharacterRemoteDataSource>().getAllCharacters();
+    // di.sl<CharacterRemoteDataSource>().getAllCharacter();
+    //di.sl<CharacterRemoteDataSourceImpl>().getAllCharacter();
     context.read<CharacterBloc>().add(GetAllCharacterEvent());
 
   }
 
   Widget buildBlocWidget() {
+    // Future <List<CharacterModel>> getChr =  characterRemoteDataSource.getAllCharacter().then((value) {
+    //   List<CharacterModel> returnList = value;
+    //   return returnList;
+    //   print(returnList[0].nickName);
+    // });
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
         if (state is Loaded) {
-          // allCharacters = (state);
+         //  allCharacters = (state).characters;
           print('loaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaded');
           return buildLoadedListWidgets();
         } else  if (state is Loading) {
           print('looooooooooooooooooooooodinnnnnnnnng');
           return showLoadingIndicator();
         }
-        else  if( state is Empty){
-          print('empty');
-          context.read<CharacterBloc>().add(GetAllCharacterEvent());
-          allCharacters = (state).characters;
-          // print(state.characters.length);
-          // print(allCharacters.length);
+            else  if( state is Empty){
+        print('empty');
+        context.read<CharacterBloc>().add(GetAllCharacterEvent());
+        allCharacters = charmodel;
+        // print(state.characters.length);
+        // print(allCharacters.length);
 
-          return buildLoadedListWidgets();
+        return buildLoadedListWidgets();
 
 
           }

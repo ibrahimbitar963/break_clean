@@ -8,7 +8,7 @@ abstract class CharacterState extends Equatable {
 }
 
 class Empty extends CharacterState {
-  List<Character> characters = [];
+  List<CharacterModel> characters = [];
   //Empty( this.characters);
 }
 class Loading extends CharacterState {}

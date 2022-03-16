@@ -15,24 +15,23 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //   //! Features
   //   //Bloc
-  // sl.registerFactory(() => CharacterBloc(getAllCharacter: sl()));
+   sl.registerFactory(() => CharacterBloc());
  // sl.registerFactory(() => CharacterBloc(getAllCharacter: sl()));
   //
   //   // Use cases
-  //
 
   sl.registerLazySingleton(() => GetAllCharacter(sl()));
   //   // Repository
 
-  sl.registerLazySingleton<CharactersRepository>(() => CharacterRepositoryImpl(
-      networkInfo: sl(), remoteDataSource: sl(), localDataSource: sl()));
+  sl.registerLazySingleton<CharactersRepository>(() =>
+      CharacterRepositoryImpl(
+      networkInfo: sl(), remoteDataSource: sl()));
   //   // Data sources
   sl.registerLazySingleton<CharacterRemoteDataSource>(
-    () => CharacterRemoteDataSourceImpl(client: sl()),
-  );
-  sl.registerLazySingleton<CharacterLocalDataSource>(
-    () => CharacterLocalDataSourceImpl(sharedPreferences: sl()),
-  );
+        () => CharacterRemoteDataSourceImpl(client: sl()));
+  // sl.registerLazySingleton<CharacterLocalDataSource>(
+  //   () => CharacterLocalDataSourceImpl(sharedPreferences: sl()),
+  // );
   // //! Core
 
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
