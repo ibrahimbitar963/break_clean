@@ -45,10 +45,21 @@ dependencies:
 
 
 
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^2.0.0
+  flutter_native_splash: ^1.2.3
+# run: flutter clean && flutter pub get && flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  color: "#f0c828"
+  image: assets/images/splash.png
+  android: true
+  ios: true
+
 
 
 # For information on the generic Dart part of this file, see the

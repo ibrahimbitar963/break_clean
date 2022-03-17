@@ -1,0 +1,204 @@
+[33mcommit 8b71c7d3caf83ac11e87ddff525b7f271e9bd2c8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Wed Mar 16 11:21:42 2022 +0200
+
+    refactor
+
+[33mcommit 6660a51820c4c072489a85e5efca58c93a816cc5[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Wed Mar 16 10:28:02 2022 +0200
+
+    loading gif
+
+[33mcommit 487b01cfd0458b7c3eccae48348ae1bac911e3cc[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Wed Mar 16 09:56:57 2022 +0200
+
+    screen run
+
+[33mcommit e97f4bbf4f1aabcdfffa279f716e6930f8bfc8c4[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Mar 15 11:23:40 2022 +0200
+
+    screen with no list
+
+[33mcommit 9ac9f64f998f7ead74b13fb0b3f0477ddaa0bab5[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Mar 15 10:32:12 2022 +0200
+
+    event
+
+[33mcommit 45191497231588732d025cfdd55533057b662e2d[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Mar 15 09:31:24 2022 +0200
+
+    list print
+
+[33mcommit 530a6af51ea1f46a79f581c1ed8c60f30b63cb47[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Sun Mar 13 14:38:24 2022 +0200
+
+    before change to <List<Character>>
+
+[33mcommit f35107fb4888900c825fdb202f40e831fd908fb2[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Sun Mar 13 13:32:13 2022 +0200
+
+    screen loading
+
+[33mcommit bc2d0906ef0d4d44932d49b1c9faad413863e098[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Sun Mar 13 12:30:39 2022 +0200
+
+    model refactor
+
+[33mcommit 58fb68579ef06026eac607ff87ff937f75219a6a[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Sun Mar 13 11:09:10 2022 +0200
+
+    http list print
+
+[33mcommit 3a57c13edf458367dc456179872d44ab5bf86de2[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Mar 10 14:22:05 2022 +0200
+
+    injection done
+
+[33mcommit 7d55f47c70e7d99e14fb7dba310ad86d5128eb68[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Fri Mar 4 16:07:53 2022 +0200
+
+    mock bloc done
+
+[33mcommit cc3c0909f5838e89543523e5111e924b4a202a28[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Fri Mar 4 16:04:58 2022 +0200
+
+    mock bloc3
+
+[33mcommit 33abc9d227f2acc5808e1f981d142761dced96f4[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Fri Mar 4 15:56:15 2022 +0200
+
+    mock bloc2
+
+[33mcommit ec0e5bf78e75ee824cc07a6ea372e2c075afbda7[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Mar 3 15:42:36 2022 +0200
+
+    mock bloc
+
+[33mcommit 23faf4d2d47d37fa6b7fd246decefbb78435a034[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Feb 22 15:54:49 2022 +0200
+
+    return a cache exception done
+
+[33mcommit 9d832408e43433c5ac435fbc49a0acd2c7e577cf[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Feb 22 15:42:42 2022 +0200
+
+    return a cache exception
+
+[33mcommit 9e0be03f6385aeb4eefd441595d39f1e7b8f5691[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Feb 22 14:32:24 2022 +0200
+
+    local data source check
+
+[33mcommit fe98ad232d7fa1d313b0c9d4aba12ab990fc5712[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Feb 22 11:39:58 2022 +0200
+
+    network info test pass
+
+[33mcommit 55ff88be4f58e48b697508cd91674b6289429d24[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Mon Feb 21 14:08:42 2022 +0200
+
+    device online all checks
+
+[33mcommit a943cac5c72f300cff67a4d6fb091675350e30e7[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Mon Feb 21 10:28:48 2022 +0200
+
+    get data from remote source done
+
+[33mcommit b110cd426fe9eecbb2b8ad8c352b27ff7211abcd[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Sun Feb 20 11:47:58 2022 +0200
+
+    local data source
+
+[33mcommit bc4736aad6faafca72bb5d17260f3ebf54504ef7[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Feb 17 15:13:20 2022 +0200
+
+    json model test
+
+[33mcommit bd4501a6b14cd5ff5a3b24bb5d68934da86e806f[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Feb 17 13:52:03 2022 +0200
+
+    character model test
+
+[33mcommit 2aee779e265495ed0f7119310dc7dcb0db49866c[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Feb 17 12:26:33 2022 +0200
+
+    get_all_Characters_test
+    done
+
+[33mcommit addf380fb7d8e0607eb4fea69e069b3bc60fa217[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Feb 17 11:46:46 2022 +0200
+
+    get_all_Characters_test
+
+[33mcommit 829e4c0cf9228cd4ded2ab48d1d68f3999519458[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Feb 17 11:18:45 2022 +0200
+
+    params
+
+[33mcommit a5c977ef2886707f70aaaa8005e3db675c35b850[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Feb 17 10:12:10 2022 +0200
+
+    call
+
+[33mcommit 1d6ca095c7d7be65636f0e64826a316df975f7e5[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Thu Feb 17 09:32:33 2022 +0200
+
+    1-testt
+
+[33mcommit 1c5d19856144f5561ba2d994160317cd21b84079[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Wed Feb 16 15:45:27 2022 +0200
+
+    1-testt
+
+[33mcommit d6e968eec215b9aa7861d5f9eed844a2796a6062[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Wed Feb 16 14:35:16 2022 +0200
+
+    1-test
+
+[33mcommit 93ecbd485f49fcd514f92c28a1bce7e59d93ecbf[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Feb 15 13:16:18 2022 +0200
+
+    domain/entites/character
+
+[33mcommit b8fbb614e2560e937402f27fdb9ae8ff80d2e21d[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Feb 15 11:13:28 2022 +0200
+
+    project files
+
+[33mcommit 54bdb444fb38de43f3d9b0a89d92b8ff081a091e[m
+Author: ibrahim.bitar963@gmail.com <ibrahim.bitar963@gmail.com>
+Date:   Tue Feb 15 09:00:04 2022 +0200
+
+    Initial commit
