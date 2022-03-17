@@ -32,37 +32,6 @@ class _CharactersPageState extends State<CharactersPage> {
   late List<CharacterModel> charModel = [];
 
 
-
-
-  List<Widget> _buildAppBarActions() {
-    if (_isSearching) {
-      return [
-        IconButton(
-          onPressed: () {
-            _stopSearching();
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.clear),
-          color: MyColors.myGrey,
-        ),
-      ];
-    } else {
-      return [
-        IconButton(
-          onPressed: () {
-            _startSearch();
-          },
-          icon: Icon(
-            Icons.search,
-            color: MyColors.myGrey,
-          ),
-        ),
-      ];
-    }
-  }
-
-
-
   @override
   void initState() {
     super.initState();
@@ -129,12 +98,12 @@ class _CharactersPageState extends State<CharactersPage> {
         backgroundColor: MyColors.myYellow,
         title: _isSearching ? SearchFiled(
             controller: _searchTextController,
-            addsearch: ( searchedCharacter){
+            addSearch: ( searchedCharacter){
           addSearchedItemToCharacterList(searchedCharacter);
             })
             : AppBarTitle(),
-        actions:_isSearching ? actions(context: context, search: true, onpressed: _stopSearching):
-        actions(context: context, search: false, onpressed: _startSearch)
+        actions:_isSearching ? actions(context: context, search: true, onPressed: _stopSearching):
+        actions(context: context, search: false, onPressed: _startSearch)
         ,
         leading: _isSearching
             ? BackButton(

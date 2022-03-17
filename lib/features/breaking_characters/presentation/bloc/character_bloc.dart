@@ -30,6 +30,6 @@ String mapFailureToMessage(Failure failure) {
     case CacheFailure:
       return CACHE_FAILURE_MESSAGE;
     default:
-      return 'Unexpected error';
+      return UNEXPECTED_ERROR;
   }
 }

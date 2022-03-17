@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class  SearchFiled extends StatelessWidget {
   final TextEditingController controller ;
-  final ValueChanged<String> addsearch;
-  const  SearchFiled({Key? key, required this.controller,required this.addsearch}) : super(key: key);
+  final ValueChanged<String> addSearch;
+  const  SearchFiled({Key? key, required this.controller,required this.addSearch}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class  SearchFiled extends StatelessWidget {
         border: InputBorder.none,
       ),
       style: TextStyle(fontSize: 18, color: MyColors.myGrey),
-      onChanged: addsearch,
+      onChanged: addSearch,
     );
   }
 }
