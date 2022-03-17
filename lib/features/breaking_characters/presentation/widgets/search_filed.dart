@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class  SearchFiled extends StatelessWidget {
   final TextEditingController controller ;
-  //final Function  addSearchedItemToCharacterListt;
   final ValueChanged<String> addsearch;
   const  SearchFiled({Key? key, required this.controller,required this.addsearch}) : super(key: key);
 

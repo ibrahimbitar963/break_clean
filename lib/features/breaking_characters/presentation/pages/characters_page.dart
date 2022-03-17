@@ -1,8 +1,16 @@
+import 'dart:async';
+
 import 'package:break_clean/core/const/colors.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/alert_widget.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/app_bar_title.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/appbar_actions.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/characters_item.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/loaded_list.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/loading_indicator.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/search_filed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
@@ -14,45 +22,17 @@ class CharactersPage extends StatefulWidget {
 }
 
 class _CharactersPageState extends State<CharactersPage> {
+
   late CharacterRemoteDataSourceImpl characterRemoteDataSource =
-      CharacterRemoteDataSourceImpl(client: sl());
+  CharacterRemoteDataSourceImpl(client: sl());
   late List<CharacterModel> allCharacters;
   late List<CharacterModel> searchedCharacterList;
   bool _isSearching = false;
   final _searchTextController = TextEditingController();
   late List<CharacterModel> charModel = [];
-  Future<List<CharacterModel>> charList() async {
-    characterRemoteDataSource.getAllCharacter().then((value) {
-      List<CharacterModel> returnList = value;
-      charModel = returnList;
-    });
-    return charModel;
-  }
 
-  Widget _buildSearchField() {
-    return TextField(
-      autofocus: true,
-      controller: _searchTextController,
-      cursorColor: MyColors.myGrey,
-      decoration: InputDecoration(
-        hintStyle: TextStyle(fontSize: 18, color: MyColors.myGrey),
-        hintText: 'Find a character',
-        border: InputBorder.none,
-      ),
-      style: TextStyle(fontSize: 18, color: MyColors.myGrey),
-      onChanged: (searchedCharacter) {
-        addSearchedItemToCharacterList(searchedCharacter);
-      },
-    );
-  }
 
-  void addSearchedItemToCharacterList(String searchedCharacter) {
-    searchedCharacterList = allCharacters
-        .where((character) =>
-            character.nickName.toLowerCase().startsWith(searchedCharacter))
-        .toList();
-    setState(() {});
-  }
+
 
   List<Widget> _buildAppBarActions() {
     if (_isSearching) {
@@ -81,25 +61,12 @@ class _CharactersPageState extends State<CharactersPage> {
     }
   }
 
-  void _startSearch() {
-    ModalRoute.of(context)!
-        .addLocalHistoryEntry(LocalHistoryEntry(onRemove: _stopSearching));
 
-    setState(() {
-      _isSearching = true;
-    });
-  }
-
-  void _stopSearching() {
-    _searchTextController.clear();
-    setState(() {
-      _isSearching = false;
-    });
-  }
 
   @override
   void initState() {
     super.initState();
+    CircularProgressIndicator();
     charList();
     context.read<CharacterBloc>().add(GetAllCharacterEvent());
   }
@@ -108,45 +75,23 @@ class _CharactersPageState extends State<CharactersPage> {
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
         if (state is Loaded) {
-          return buildLoadedListWidgets();
+          return LoadedListWidget(list: buildCharactersList(),);
         } else if (state is Loading) {
-          return showLoadingIndicator();
+          return ShowLoadingIndicator();
         } else if (state is Empty) {
-          showLoadingIndicator();
+          ShowLoadingIndicator();
           context.read<CharacterBloc>().add(GetAllCharacterEvent());
           allCharacters = charModel;
-          return buildLoadedListWidgets();
+          return LoadedListWidget(list: buildCharactersList(),);
         } else if (state is Error) {
-          return showLoadingIndicator();
+          return ShowLoadingIndicator();
         } else {
-          return showLoadingIndicator();
+          return ShowLoadingIndicator();
         }
       },
     );
   }
 
-  Widget showLoadingIndicator() {
-    return Center(
-      child: Container(
-        child: CircularProgressIndicator(
-          color: MyColors.myYellow,
-        ),
-      ),
-    );
-  }
-
-  Widget buildLoadedListWidgets() {
-    return SingleChildScrollView(
-      child: Container(
-        color: MyColors.myGrey,
-        child: Column(
-          children: [
-            buildCharactersList(),
-          ],
-        ),
-      ),
-    );
-  }
 
   Widget buildCharactersList() {
     return Center(
@@ -176,49 +121,21 @@ class _CharactersPageState extends State<CharactersPage> {
     );
   }
 
-  Widget _buildAppBarTitle() {
-    return Text(
-      'Characters',
-      style: TextStyle(color: MyColors.myGrey),
-    );
-  }
-
-  Widget buildAlertWidget() {
-    return Center(
-      child: Container(
-        color: Colors.white70,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Please check your internet connection',
-                style: TextStyle(
-                    color: MyColors.myYellow,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Image.asset(
-                'assets/images/notify.png',
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColors.myYellow,
-        title: _isSearching ? _buildSearchField() : _buildAppBarTitle(),
-        actions: _buildAppBarActions(),
+        title: _isSearching ? SearchFiled(
+            controller: _searchTextController,
+            addsearch: ( searchedCharacter){
+          addSearchedItemToCharacterList(searchedCharacter);
+            })
+            : AppBarTitle(),
+        actions:_isSearching ? actions(context: context, search: true, onpressed: _stopSearching):
+        actions(context: context, search: false, onpressed: _startSearch)
+        ,
         leading: _isSearching
             ? BackButton(
                 color: MyColors.myGrey,
@@ -235,11 +152,47 @@ class _CharactersPageState extends State<CharactersPage> {
           if (connected) {
             return buildBlocWidget();
           } else {
-            return buildAlertWidget();
+            return AlertWidget();
           }
         },
-        child: showLoadingIndicator(),
+        child: ShowLoadingIndicator(),
       ),
     );
   }
+  Future<List<CharacterModel>> charList() async {
+
+
+    characterRemoteDataSource.getAllCharacter().then((value) {
+      List<CharacterModel> returnList = value;
+      charModel = returnList;
+    });
+    return charModel;
+  }
+  void _startSearch() {
+    ModalRoute.of(context)!
+        .addLocalHistoryEntry(LocalHistoryEntry(onRemove: _stopSearching));
+
+    setState(() {
+      _isSearching = true;
+    });
+  }
+  void _stopSearching() {
+    _searchTextController.clear();
+    setState(() {
+      _isSearching = false;
+    });
+  }
+  void addSearchedItemToCharacterList(String searchedCharacter) {
+    searchedCharacterList = allCharacters
+        .where((character) =>
+        character.nickName.toLowerCase().startsWith(searchedCharacter))
+        .toList();
+    setState(() {});
+  }
+
+
 }
+
+
+
+
