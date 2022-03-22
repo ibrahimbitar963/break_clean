@@ -7,7 +7,7 @@ import 'package:break_clean/features/breaking_characters/domain/entites/characte
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:dartz/dartz.dart';
 
-typedef Future<List<CharacterModel>> _ConcreteOrRandomChooser();
+typedef Future<List<CharacterModel>> _CharacterOrCache();
 
 class CharacterRepositoryImpl implements CharactersRepository {
   late final CharacterRemoteDataSource remoteDataSource;
@@ -21,18 +21,18 @@ class CharacterRepositoryImpl implements CharactersRepository {
 
   @override
   Future<Either<Failure, List<Character>>> getAllCharacters() async {
-    return await getTrivia(() {
+    return await getChar(() {
       return remoteDataSource.getAllCharacter();
     });
   }
 
-  Future<Either<Failure, List<Character>>> getTrivia(
-      _ConcreteOrRandomChooser getConcreteOrRandom) async {
+  Future<Either<Failure, List<Character>>> getChar(
+      _CharacterOrCache getConcreteOrRandom) async {
     if (await networkInfo.isConnected!) {
       try {
-        final remoteTrivia = await getConcreteOrRandom();
+        final remoteChar = await getConcreteOrRandom();
         remoteDataSource.getAllCharacter();
-        return Right(remoteTrivia);
+        return Right(remoteChar);
       } on ServerException {
         return Left(ServerFailure());
       }

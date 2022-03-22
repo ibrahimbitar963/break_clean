@@ -1,4 +1,0 @@
-// Future <List<CharacterModel>> getChr =  characterRemoteDataSource.getAllCharacter().then((value) {
-    //   List<CharacterModel> returnList = value;
-    //   print(returnList[0].nickName);
-    // });

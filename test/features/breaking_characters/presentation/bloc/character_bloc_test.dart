@@ -1,3 +1,4 @@
+import 'package:break_clean/core/const/strings.dart';
 import 'package:break_clean/core/error/failures.dart';
 import 'package:break_clean/core/usecases/usecases.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';

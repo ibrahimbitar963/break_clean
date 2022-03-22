@@ -33,7 +33,7 @@ void main() {
         () async* {
       when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
           (_) async => http.Response(fixture('characters.json'), 200));
-      characterRemoteDataSourceImpl.getOneCharacters(tCharacterNumber);
+      characterRemoteDataSourceImpl.getAllCharacter();
       verify(
         mockHttpClient.get(
           Uri.parse(
@@ -47,7 +47,7 @@ void main() {
       when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
           (_) async => http.Response(fixture('characters.json'), 200));
       final result = await characterRemoteDataSourceImpl
-          .getOneCharacters(tCharacterNumber);
+          .getAllCharacter();
       expect(result, equals(tCharacterModel));
     });
 
@@ -55,9 +55,9 @@ void main() {
       when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
               (_) async => http.Response('Something went wrong',400));
             
-            final call = characterRemoteDataSourceImpl.getOneCharacters;
+            final call = characterRemoteDataSourceImpl.getAllCharacter();
             
-            expect(()=>call(tCharacterNumber), throwsA(TypeMatcher<ServerException>()));
+            expect(()=>call, throwsA(TypeMatcher<ServerException>()));
 
     });
   });
