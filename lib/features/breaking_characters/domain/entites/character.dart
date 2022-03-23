@@ -1,5 +1,8 @@
 import 'package:equatable/equatable.dart';
 
+/// The type of data the app will operates with, no TDD because no thing to test.
+/// Extends Equatable for easy comparison.
+
 class Character extends Equatable {
   late final int charID;
   late final String nickName;

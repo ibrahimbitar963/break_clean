@@ -24,6 +24,7 @@ class CharacterRepositoryImpl implements CharactersRepository {
 
   @override
   Future<Either<Failure, List<Character>>> getAllCharacters() async {
+
     return await getChar(() {
       return remoteDataSource.getAllCharacter();
     });
