@@ -14,9 +14,9 @@ part 'character_state.dart';
 class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
   late CharactersRepository charactersRepository;
   late Future<List<CharacterModel>> characters;
-  CharacterState get initialState => Empty();
+  CharacterState get initialState => CharactersBloc();
 
-  CharacterBloc() : super(Empty()) {
+  CharacterBloc() : super(CharactersBloc()) {
     on<GetAllCharacterEvent>((event, emit) async {
       characters = di.sl<CharacterRemoteDataSource>().getAllCharacter();
     });

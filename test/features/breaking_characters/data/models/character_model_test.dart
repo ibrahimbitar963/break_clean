@@ -9,8 +9,25 @@ import '../../../../fixture/fixture_reader.dart';
 
 void main() {
   final tCharacterModel = CharacterModel(
-      charID: 1, nickName: 'Walter White', actorName: 'Heisenberg');
-  test('should get character model', () async* {
+      charID: 1, nickName: 'Walter White', actorName: 'Heisenberg',
+      image: 'https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg',
+      jobs:[
+        "High School Chemistry Teacher",
+        "Meth King Pin"
+      ],
+      appearance:  [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      category: 'Breaking Bad',
+  betterCallSaulAppearance: [],
+      statusIfDeadOrAlive: 'Presumed dead'
+
+  );
+  test('should get character model', () async {
     expect(tCharacterModel, isA<Character>());
   });
 

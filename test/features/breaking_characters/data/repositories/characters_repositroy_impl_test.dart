@@ -32,18 +32,36 @@ void main() {
     repositoryImpl = CharacterRepositoryImpl(
       localDataSource: mockLocalDataSource,
       networkInfo: mockNetworkInfo,
+
       remoteDataSource: mockRemoteDataSource,
     );
   });
   group('get character', () {
     final tCharacterNumber = 1;
-    final tCharacterModel = CharacterModel(
-        charID: 1, nickName: 'Heisenberg', actorName: 'Walter White');
+    final tCharacterModel =CharacterModel(
+        charID: 1, nickName: 'Walter White', actorName: 'Heisenberg',
+        image: 'https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg',
+        jobs:[
+          "High School Chemistry Teacher",
+          "Meth King Pin"
+        ],
+        appearance:  [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        category: 'Breaking Bad',
+        betterCallSaulAppearance: [],
+        statusIfDeadOrAlive: 'Presumed dead'
+
+    );
 
     final Character tCharacter = tCharacterModel;
     test('check if the device online', () async* {
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      repositoryImpl.getOneCharacters(tCharacterNumber);
+      repositoryImpl.getOneCharacter(tCharacterNumber);
       verify(mockNetworkInfo.isConnected);
     });
 
@@ -54,35 +72,35 @@ void main() {
 
       test(
           'should return remote data when the call to remote data source is success ',
-          () async {
-        when(mockRemoteDataSource.getOneCharacters(tCharacterNumber))
-            .thenAnswer((_) async => tCharacterModel);
+              () async {
+            when(mockRemoteDataSource.getOneCharacter(tCharacterNumber))
+                .thenAnswer((_) async => tCharacterModel);
 
-        final result = await repositoryImpl.getOneCharacters(tCharacterNumber);
-        verify(mockRemoteDataSource.getOneCharacters(tCharacterNumber));
-        expect(result, equals(Right(tCharacter)));
-      });
+            final result = await repositoryImpl.getOneCharacter(tCharacterNumber);
+            verify(mockRemoteDataSource.getOneCharacter(tCharacterNumber));
+            expect(result, equals(Right(tCharacter)));
+          });
       test(
           'should cache the data locally when the call to remote data source is success ',
-          () async {
-        when(mockRemoteDataSource.getOneCharacters(tCharacterNumber))
-            .thenAnswer((_) async => tCharacterModel);
+              () async {
+            when(mockRemoteDataSource.getOneCharacter(tCharacterNumber))
+                .thenAnswer((_) async => tCharacterModel);
 
-        await repositoryImpl.getOneCharacters(tCharacterNumber);
-        verify(mockRemoteDataSource.getOneCharacters(tCharacterNumber));
-        verify(mockLocalDataSource.cachedCharacter(tCharacterModel));
-      });
+            await repositoryImpl.getOneCharacter(tCharacterNumber);
+            verify(mockRemoteDataSource.getOneCharacter(tCharacterNumber));
+            verify(mockLocalDataSource.cachedCharacter(tCharacterModel));
+          });
       test(
           'should return server failure data when the call to remote data source is unsuccessful ',
-          () async {
-        when(mockRemoteDataSource.getOneCharacters(tCharacterNumber))
-            .thenThrow(ServerException());
+              () async {
+            when(mockRemoteDataSource.getOneCharacter(tCharacterNumber))
+                .thenThrow(ServerException());
 
-        final result = await repositoryImpl.getOneCharacters(tCharacterNumber);
-        verify(mockRemoteDataSource.getOneCharacters(tCharacterNumber));
-        verifyNoMoreInteractions(mockLocalDataSource);
-        expect(result, equals(Left(ServerFailure())));
-      });
+            final result = await repositoryImpl.getOneCharacter(tCharacterNumber);
+            verify(mockRemoteDataSource.getOneCharacter(tCharacterNumber));
+            verifyNoMoreInteractions(mockLocalDataSource);
+            expect(result, equals(Left(ServerFailure())));
+          });
     });
     group('device is offline', () {
       setUp(() {

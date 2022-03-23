@@ -7,7 +7,7 @@ abstract class CharacterState extends Equatable {
   List<Object?> get props => throw UnimplementedError();
 }
 
-class Empty extends CharacterState {
+class CharactersBloc extends CharacterState {
   List<CharacterModel> characters = [];
 }
 class Loading extends CharacterState {}
@@ -15,7 +15,7 @@ class Loaded extends CharacterState {
 
 
   List<Character> characters = [];
-  Loaded( this.characters):super([characters]);
+  Loaded( this.characters, {character}):super([characters]);
 }
 class Error extends CharacterState{
 

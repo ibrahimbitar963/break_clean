@@ -43,11 +43,9 @@ class _CharactersPageState extends State<CharactersPage> {
   Widget buildBlocWidget() {
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
-        if (state is Loaded) {
-          return LoadedListWidget(list: buildCharactersList(),);
-        } else if (state is Loading) {
+        if (state is Loading) {
           return ShowLoadingIndicator();
-        } else if (state is Empty) {
+        } else if (state is CharactersBloc) {
           ShowLoadingIndicator();
           context.read<CharacterBloc>().add(GetAllCharacterEvent());
           allCharacters = charModel;

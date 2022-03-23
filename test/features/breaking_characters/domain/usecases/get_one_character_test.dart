@@ -18,16 +18,33 @@ void main() {
     useCase = GetOneCharacter(MockCharacter());
   });
   final characterId = 1;
-  final characterTest =
-      Character(actorName: 'brayan', charID: 1, nickName: 'hisenberg');
+ final characterTest= Character(
+      charID: 1, nickName: 'Walter White', actorName: 'Heisenberg',
+      image: 'https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg',
+      jobs:[
+        "High School Chemistry Teacher",
+        "Meth King Pin"
+      ],
+      appearance:  [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      category: 'Breaking Bad',
+      betterCallSaulAppearance: [],
+      statusIfDeadOrAlive: 'Presumed dead'
+
+  );
 
   test('should get one character', () async* {
-    when(mockCharacter.getOneCharacters(any))
+    when(mockCharacter.getOneCharacter(any))
 
         .thenAnswer((_) async => Right(characterTest));
     final result = await useCase(Params(charId:characterId));
     expect(result, Right(characterTest));
-    verify(mockCharacter.getOneCharacters(characterId));
+    verify(mockCharacter.getOneCharacter(characterId));
     verifyNoMoreInteractions(mockCharacter);
   });
 }

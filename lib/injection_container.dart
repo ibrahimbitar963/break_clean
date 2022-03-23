@@ -27,7 +27,7 @@ Future<void> init() async {
 
   sl.registerLazySingleton<CharactersRepository>(() =>
       CharacterRepositoryImpl(
-      networkInfo: sl(), remoteDataSource: sl()));
+      networkInfo: sl(), remoteDataSource: sl(),localDataSource: sl()));
   // Data sources
   sl.registerLazySingleton<CharacterRemoteDataSource>(
         () => CharacterRemoteDataSourceImpl(client: sl()));

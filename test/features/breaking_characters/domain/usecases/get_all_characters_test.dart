@@ -1,4 +1,5 @@
 import 'package:break_clean/core/usecases/usecases.dart';
+import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
@@ -19,8 +20,26 @@ void main() {
     mockCharacter = MockCharacter();
     usecase = GetAllCharacter(MockCharacter());
   });
-  final characterTest =
-  Character(actorName: 'brayan', charID: 1, nickName: 'hisenberg');
+  List<CharacterModel> characterTest =[ CharacterModel(
+      charID: 1, nickName: 'Walter White', actorName: 'Heisenberg',
+      image: 'https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg',
+      jobs:[
+        "High School Chemistry Teacher",
+        "Meth King Pin"
+      ],
+      appearance:  [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      category: 'Breaking Bad',
+      betterCallSaulAppearance: [],
+      statusIfDeadOrAlive: 'Presumed dead'
+
+  )];
+
 
   test('should get character', () async* {
     when(mockCharacter.getAllCharacters())
