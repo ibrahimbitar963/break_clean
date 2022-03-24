@@ -9,7 +9,7 @@ class LoadedListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        color: MyColors.myGrey,
+
         child: Column(
           children: [
            list,

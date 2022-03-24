@@ -1,4 +1,5 @@
 import 'package:break_clean/core/const/colors.dart';
+import 'package:break_clean/core/const/strings.dart';
 import 'package:flutter/material.dart';
 
 class AppBarTitle extends StatelessWidget {
@@ -9,8 +10,8 @@ class AppBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Characters',
-      style: TextStyle(color: MyColors.myGrey),
+      APP_BAR_TITLE,
+
     );
   }
 }

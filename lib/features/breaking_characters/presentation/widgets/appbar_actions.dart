@@ -14,7 +14,7 @@ List<Widget>? actions(
           Navigator.pop(context);
         },
         icon: Icon(Icons.clear),
-        color: MyColors.myGrey,
+        //color: MyColors.myGrey,
       ),
     ];
   } else {
@@ -25,7 +25,7 @@ List<Widget>? actions(
         },
         icon: Icon(
           Icons.search,
-          color: MyColors.myGrey,
+          // color: MyColors.myGrey,
         ),
       ),
     ];

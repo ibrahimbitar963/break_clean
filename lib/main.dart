@@ -1,6 +1,8 @@
+import 'package:break_clean/core/const/themes.dart';
 import 'package:break_clean/features/breaking_characters/presentation/pages/characters_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'features/breaking_characters/presentation/bloc/character_bloc.dart';
 import 'injection_container.dart' as di;
 
@@ -21,13 +23,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return BlocProvider<CharacterBloc>(
-      create: (context) => CharacterBloc(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: CharactersPage(),
+    return ChangeNotifierProvider(
+      create: (context)=>ThemeChecker(),
+      builder: (context,_) {
+        final themeProvider = Provider.of<ThemeChecker>(context);
 
-      ),
+
+       return BlocProvider<CharacterBloc>(
+          create: (context) => CharacterBloc(),
+          child: MaterialApp(
+            themeMode: themeProvider.themeMode,
+            theme: Themes.myLight,
+            darkTheme: Themes.myDark
+            ,
+
+            debugShowCheckedModeBanner: false,
+            home: CharactersPage(),
+
+          ),
+        );
+
+      },
     );
   }
 }

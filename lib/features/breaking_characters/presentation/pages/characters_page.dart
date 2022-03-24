@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:break_clean/core/const/colors.dart';
+import 'package:break_clean/core/const/strings.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/alert_widget.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/app_bar_title.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/appbar_actions.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/change_theme_widget.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/characters_item.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/loaded_list.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/loading_indicator.dart';
@@ -27,6 +29,7 @@ class _CharactersPageState extends State<CharactersPage> {
   late List<CharacterModel> allCharacters;
   late List<CharacterModel> searchedCharacterList;
   bool _isSearching = false;
+  bool _isDark=false;
   final _searchTextController = TextEditingController();
   late List<CharacterModel> charModel = [];
 
@@ -88,21 +91,21 @@ class _CharactersPageState extends State<CharactersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: MyColors.myYellow,
+
         title: _isSearching ? SearchFiled(
             controller: _searchTextController,
             addSearch: ( searchedCharacter){
           addSearchedItemToCharacterList(searchedCharacter);
             })
-            : AppBarTitle(),
+            : Text(APP_BAR_TITLE),
         actions:_isSearching ? actions(context: context, search: true, onPressed: _stopSearching):
         actions(context: context, search: false, onPressed: _startSearch)
         ,
         leading: _isSearching
             ? BackButton(
-                color: MyColors.myGrey,
+
               )
-            : Container(),
+            : ChangeThemeWidget(),
       ),
       body: OfflineBuilder(
         connectivityBuilder: (
@@ -154,6 +157,7 @@ class _CharactersPageState extends State<CharactersPage> {
 
 
 }
+
 
 
 

@@ -9,15 +9,17 @@ class  SearchFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+
       autofocus: true,
       controller: controller,
       cursorColor: MyColors.myGrey,
+
       decoration: InputDecoration(
-        hintStyle: TextStyle(fontSize: 18, color: MyColors.myGrey),
+        hintStyle: TextStyle(fontSize: 18, ),
         hintText: 'Find a character',
         border: InputBorder.none,
       ),
-      style: TextStyle(fontSize: 18, color: MyColors.myGrey),
+      style: TextStyle(fontSize: 18, ),
       onChanged: addSearch,
     );
   }
