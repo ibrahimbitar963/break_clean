@@ -23,8 +23,7 @@ class CharactersPage extends StatefulWidget {
 
 class _CharactersPageState extends State<CharactersPage> {
 
-  late CharacterRemoteDataSourceImpl characterRemoteDataSource =
-  CharacterRemoteDataSourceImpl(client: sl());
+  late CharacterRemoteDataSourceImpl characterRemoteDataSource = CharacterRemoteDataSourceImpl(client: sl());
   late List<CharacterModel> allCharacters;
   late List<CharacterModel> searchedCharacterList;
   bool _isSearching = false;
@@ -35,11 +34,9 @@ class _CharactersPageState extends State<CharactersPage> {
   @override
   void initState() {
     super.initState();
-    CircularProgressIndicator();
     charList();
     context.read<CharacterBloc>().add(GetAllCharacterEvent());
   }
-
   Widget buildBlocWidget() {
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
@@ -58,8 +55,6 @@ class _CharactersPageState extends State<CharactersPage> {
       },
     );
   }
-
-
   Widget buildCharactersList() {
     return Center(
       child: Center(

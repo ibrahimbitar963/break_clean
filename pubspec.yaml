@@ -26,7 +26,6 @@ dependencies:
   equatable: ^2.0.0
 
   # Remote API
-
   http: ^0.13.1
 
   # Functional programming thingies
@@ -40,7 +39,10 @@ dependencies:
 
   #checks for an Active Internet connection
   internet_connection_checker: ^0.0.1+2
+
+  #to handle offline/online connectivity
   flutter_offline: ^2.0.0
+
   cupertino_icons: ^1.0.2
 
 
