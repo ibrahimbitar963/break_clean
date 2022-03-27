@@ -4,6 +4,7 @@ import 'package:break_clean/core/const/strings.dart';
 import 'package:break_clean/core/error/failures.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
+import 'package:break_clean/features/breaking_characters/data/repositories/character_repository_impl.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:equatable/equatable.dart';
@@ -16,7 +17,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
   late Future<List<CharacterModel>> characters;
   CharacterState get initialState => CharactersBloc();
 
-  CharacterBloc() : super(CharactersBloc()) {
+  CharacterBloc(CharacterRepositoryImpl characterRepo) : super(CharactersBloc()) {
     on<GetAllCharacterEvent>((event, emit) async {
       characters = di.sl<CharacterRemoteDataSource>().getAllCharacter();
     });

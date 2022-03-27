@@ -1,3 +1,4 @@
+import 'package:break_clean/features/breaking_characters/data/datasources/character_local_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
@@ -17,7 +18,7 @@ Future<void> init() async {
   //! Features
 
   // Bloc
-   sl.registerFactory(() => CharacterBloc());
+   sl.registerFactory(() => CharacterBloc(sl()));
 
 
    // Use cases
@@ -31,6 +32,8 @@ Future<void> init() async {
   // Data sources
   sl.registerLazySingleton<CharacterRemoteDataSource>(
         () => CharacterRemoteDataSourceImpl(client: sl()));
+   sl.registerLazySingleton<CharacterLocalDataSource>(
+           () => CharacterLocalDataSourceImpl(sharedPreferences: sl()));
 
   //! Core
 

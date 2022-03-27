@@ -101,11 +101,11 @@ class _CharactersPageState extends State<CharactersPage> {
         actions:_isSearching ? actions(context: context, search: true, onPressed: _stopSearching):
         actions(context: context, search: false, onPressed: _startSearch)
         ,
-        leading: _isSearching
-            ? BackButton(
-
-              )
-            : ChangeThemeWidget(),
+        // leading: _isSearching
+        //     ? BackButton(
+        //
+        //       )
+        //     : Container(),
       ),
       body: OfflineBuilder(
         connectivityBuilder: (
@@ -121,6 +121,9 @@ class _CharactersPageState extends State<CharactersPage> {
           }
         },
         child: ShowLoadingIndicator(),
+      ),
+     drawer: Drawer(
+
       ),
     );
   }

@@ -15,24 +15,6 @@ class CharacterRemoteDataSourceImpl implements CharacterRemoteDataSource {
 
   CharacterRemoteDataSourceImpl({required this.client});
 
-  // Future<List<CharacterModel>> getCharacterFromURL(String url) async {
-  //   final response = await client.get(
-  //     Uri.parse(url),
-  //     headers: {'Content-Type': 'application/json'},
-  //   );
-  //
-  //   if (response.statusCode == 200) {
-  //     List<CharacterModel> characters =
-  //         List<CharacterModel>.from(json.decode(response.body));
-  //
-  //     characters.forEach((element) {});
-  //
-  //     return characters;
-  //   } else {
-  //     throw Exception('Failed to load ');
-  //   }
-  // }
-
   @override
   Future<List<CharacterModel>> getAllCharacter() async {
     final response = await client.get(
