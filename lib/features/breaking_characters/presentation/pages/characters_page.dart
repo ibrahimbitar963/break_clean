@@ -1,18 +1,15 @@
 import 'dart:async';
-
-import 'package:break_clean/core/const/colors.dart';
 import 'package:break_clean/core/const/strings.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/alert_widget.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/app_bar_title.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/appbar_actions.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/change_theme_widget.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/alert_widget.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/appbar_actions.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/change_theme_widget.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/characters_item.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/loaded_list.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/loading_indicator.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/search_filed.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loaded_list.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loading_indicator.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/search_filed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
@@ -29,7 +26,6 @@ class _CharactersPageState extends State<CharactersPage> {
   late List<CharacterModel> allCharacters;
   late List<CharacterModel> searchedCharacterList;
   bool _isSearching = false;
-  bool _isDark=false;
   final _searchTextController = TextEditingController();
   late List<CharacterModel> charModel = [];
 
@@ -101,11 +97,11 @@ class _CharactersPageState extends State<CharactersPage> {
         actions:_isSearching ? actions(context: context, search: true, onPressed: _stopSearching):
         actions(context: context, search: false, onPressed: _startSearch)
         ,
-        // leading: _isSearching
-        //     ? BackButton(
-        //
-        //       )
-        //     : Container(),
+        leading: _isSearching
+            ? BackButton(
+
+              )
+            : ChangeThemeWidget(),
       ),
       body: OfflineBuilder(
         connectivityBuilder: (
@@ -121,11 +117,11 @@ class _CharactersPageState extends State<CharactersPage> {
           }
         },
         child: ShowLoadingIndicator(),
-      ),
-     drawer: Drawer(
 
       ),
-    );
+
+
+   );
   }
   Future<List<CharacterModel>> charList() async {
 
@@ -160,6 +156,8 @@ class _CharactersPageState extends State<CharactersPage> {
 
 
 }
+
+
 
 
 

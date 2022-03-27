@@ -1,18 +1,14 @@
-import 'dart:math';
-
-import 'package:break_clean/core/const/colors.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
-import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/divider.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/rich_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CharactersDetailsScreen extends StatelessWidget {
-  late Character character;
+ final Character character;
   CharactersDetailsScreen({required this.character});
 
   Widget buildSliverAppBar() {
     return SliverAppBar(
-      backgroundColor: MyColors.myGrey,
       expandedHeight: 570,
       pinned: true,
       stretch: true,
@@ -22,7 +18,6 @@ class CharactersDetailsScreen extends StatelessWidget {
         title: Text(
           character.actorName,
           textAlign: TextAlign.center,
-          style: TextStyle(color: MyColors.myWhite),
         ),
         background: Hero(
           tag: character.charID,
@@ -36,59 +31,21 @@ class CharactersDetailsScreen extends StatelessWidget {
   }
 
   Widget characterInfo({required String title, required String value}) {
-    return RichText(
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      text: TextSpan(
-        children: [
-          TextSpan(
-              text: title,
-              style: TextStyle(
-                color: MyColors.myWhite,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-          ),
-          TextSpan(
-            text: value,
-            style: TextStyle(
-              color: MyColors.myWhite,
-              fontSize: 16,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildDivider({required double endIndent}) {
-    return Divider(
-      endIndent: endIndent,
-      color: MyColors.myYellow,
-      height: 30,
-      thickness: 4,
+    return RichWidget(
+      title: title,
+      value: value,
     );
   }
 
 
-  Widget showLoadingIndicator() {
-    return Center(
-      child: Container(
-        child: CircularProgressIndicator(
-          color: MyColors.myYellow,
-        ),
-      ),
-    );
-  }
+
 
 
 
 
   @override
   Widget build(BuildContext context) {
-    //BlocProvider.of<CharacterBloc>(context).getQuote(character.nickName);
     return Scaffold(
-      backgroundColor: MyColors.myGrey,
       body: CustomScrollView(
         slivers: [
           buildSliverAppBar(),
@@ -134,7 +91,7 @@ class CharactersDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 300,
+                  height: 500,
                 ),
               ],
             ),
@@ -144,3 +101,7 @@ class CharactersDetailsScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+

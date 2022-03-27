@@ -43,9 +43,9 @@ charactersRepositoryImpl = CharacterRepositoryImpl(remoteDataSource: sl(), netwo
           create: (context) => CharacterBloc(charactersRepositoryImpl),
           child: MaterialApp(
             onGenerateRoute: appRouter.generateRoute,
-           // themeMode: themeProvider.themeMode,
-            theme: Themes.myDark,
-            // darkTheme: Themes.myDark,
+            themeMode: themeProvider.themeMode,
+            theme: Themes.myLight,
+            darkTheme: Themes.myDark,
 
             debugShowCheckedModeBanner: false,
             home: CharactersPage(),

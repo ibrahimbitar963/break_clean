@@ -1,4 +1,3 @@
-import 'package:break_clean/core/const/colors.dart';
 import 'package:break_clean/core/const/strings.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +24,7 @@ class CharactersItem extends StatelessWidget {
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              color: MyColors.myGrey,
+              // color: MyColors.myGrey,
               child: character.image.isNotEmpty?
               FadeInImage.assetNetwork( fit: BoxFit.cover,
                   placeholder: 'assets/images/loading.gif' ,
@@ -42,7 +41,7 @@ class CharactersItem extends StatelessWidget {
               '${character.nickName}',
               style: TextStyle(
                 height: 1.3,
-                color: MyColors.myWhite,
+                // color: MyColors.myWhite,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),

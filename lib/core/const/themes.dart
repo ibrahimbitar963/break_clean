@@ -14,25 +14,31 @@ class ThemeChecker extends ChangeNotifier{
 }
 class Themes{
 static final myDark = ThemeData(
+  accentColor:  Colors.white54,
+  colorScheme: ColorScheme.dark(),
   scaffoldBackgroundColor: MyColors.myGrey ,
   appBarTheme: AppBarTheme(
     backgroundColor: MyColors.myYellow,
     foregroundColor: Colors.black
   ),
-  //    colorScheme: ColorScheme.dark(),
-  accentColor:  Colors.white54,
+  dividerColor: MyColors.myYellow,
+
+
+
+
 
 
 
 );
 static final myLight = ThemeData(
+  accentColor: Colors.green.shade200,
+  colorScheme: ColorScheme.light(),
     scaffoldBackgroundColor: Colors.white ,
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.tealAccent.shade400,
       foregroundColor: Colors.black
     ),
-  accentColor: Colors.green.shade200,
-  //  colorScheme: ColorScheme.light(),
+  dividerColor: Colors.green.shade200,
 
 
 );
