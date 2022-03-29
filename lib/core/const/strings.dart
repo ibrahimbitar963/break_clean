@@ -1,9 +1,13 @@
-const  CharactersPages ='/';
+const CharactersPages ='/';
 const charactersDetailsScreen = 'charachters_details';
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
-const String INVALID_INPUT_FAILURE_MESSAGE =
-    'Invalid Input - The number must be a positive integer or zero.';
+const String INVALID_INPUT_FAILURE_MESSAGE = 'Invalid Input - The number must be a positive integer or zero.';
 const String UNEXPECTED_ERROR= 'Unexpected error';
-const API_URL = 'https://www.breakingbadapi.com/api/characters/';
-const APP_BAR_TITLE = 'Characters';
+const String API_URL = 'https://www.breakingbadapi.com/api/characters/';
+const String APP_BAR_TITLE = 'Characters';
+const String CHARACTER_JOB = 'Jobs :';
+const String APPEARING= 'Appeared In: ';
+const String SEASONS='Seasons: ';
+const String STATUS='Status: ';
+const String BETTER_CALL_SAUL_APPEARANCE = 'better call saul appearance: ';
