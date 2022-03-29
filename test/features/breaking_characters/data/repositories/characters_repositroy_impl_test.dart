@@ -29,12 +29,7 @@ void main() {
     mockLocalDataSource = MockLocalDataSource();
     mockRemoteDataSource = MockRemoteDataSource();
     mockNetworkInfo = MockNetworkInfo();
-    repositoryImpl = CharacterRepositoryImpl(
-      localDataSource: mockLocalDataSource,
-      networkInfo: mockNetworkInfo,
-
-      remoteDataSource: mockRemoteDataSource,
-    );
+    repositoryImpl = CharacterRepositoryImpl(localDataSource: mockLocalDataSource, networkInfo: mockNetworkInfo, remoteDataSource: mockRemoteDataSource,);
   });
   group('get character', () {
     final tCharacterNumber = 1;

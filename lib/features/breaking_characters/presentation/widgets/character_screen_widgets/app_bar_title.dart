@@ -1,5 +1,4 @@
-import 'package:break_clean/core/const/colors.dart';
-import 'package:break_clean/core/const/strings.dart';
+import 'package:break_clean/core/local/app_local.dart';
 import 'package:flutter/material.dart';
 
 class AppBarTitle extends StatelessWidget {
@@ -9,8 +8,9 @@ class AppBarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final translator = AppLocalizations.of(context)!;
     return Text(
-      APP_BAR_TITLE,
+     translator.translate('APP_BAR_TITLE')!,
 
     );
   }

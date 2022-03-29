@@ -1,4 +1,5 @@
 import 'package:break_clean/core/const/colors.dart';
+import 'package:break_clean/core/local/app_local.dart';
 import 'package:flutter/material.dart';
 
 class  SearchFiled extends StatelessWidget {
@@ -8,6 +9,7 @@ class  SearchFiled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final translator = AppLocalizations.of(context)!;
     return TextField(
 
       autofocus: true,
@@ -16,7 +18,7 @@ class  SearchFiled extends StatelessWidget {
 
       decoration: InputDecoration(
         hintStyle: TextStyle(fontSize: 18, ),
-        hintText: 'Find a character',
+        hintText: translator.translate('Find a character'),
         border: InputBorder.none,
       ),
       style: TextStyle(fontSize: 18, ),

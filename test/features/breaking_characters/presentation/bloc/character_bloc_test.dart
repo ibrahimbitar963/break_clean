@@ -2,6 +2,7 @@ import 'package:break_clean/core/const/strings.dart';
 import 'package:break_clean/core/error/failures.dart';
 import 'package:break_clean/core/usecases/usecases.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
+import 'package:break_clean/features/breaking_characters/data/repositories/character_repository_impl.dart';
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:break_clean/features/breaking_characters/domain/usecases/get_all_characters.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
@@ -10,27 +11,32 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../domain/usecases/get_all_characters_test.dart';
+import '../../data/repositories/characters_repositroy_impl_test.dart';
 
 @GenerateMocks([CharactersRepository])
 class MockCharacterBloc extends Mock implements CharacterBloc{}
 class MockGetAllCharacter extends Mock implements GetAllCharacter{}
- class MockCharacterRepository extends Mock implements CharactersRepository{}
+class MockCharacterRepository extends Mock implements CharactersRepository{}
+class MockCharacterRepositoryImpl extends Mock implements CharacterRepositoryImpl{}
 
 
       void main(){
-
-          late MockCharacterRepository mockCharacterRepository;
-          late  CharacterBloc characterBloc;
-          late MockCharacterBloc mockCharacterBloc;
-          late   MockGetAllCharacter mockGetAllCharacter;
-           CharactersRepository charactersRepository;
-
+        late CharacterRepositoryImpl repositoryImpl;
+        late MockLocalDataSource mockLocalDataSource;
+        late MockRemoteDataSource mockRemoteDataSource;
+        late MockNetworkInfo mockNetworkInfo;
+        late CharacterBloc characterBloc;
+        late MockGetAllCharacter mockGetAllCharacter;
 
   setUp((){
+    mockLocalDataSource = MockLocalDataSource();
+    mockRemoteDataSource = MockRemoteDataSource();
+    mockNetworkInfo = MockNetworkInfo();
+    repositoryImpl = CharacterRepositoryImpl(localDataSource: mockLocalDataSource, networkInfo: mockNetworkInfo, remoteDataSource: mockRemoteDataSource,);
+
 
     mockGetAllCharacter = MockGetAllCharacter();
-    characterBloc = CharacterBloc();
+    characterBloc = CharacterBloc(repositoryImpl);
 
 
   });
