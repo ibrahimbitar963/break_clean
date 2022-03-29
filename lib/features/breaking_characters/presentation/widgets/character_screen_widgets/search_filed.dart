@@ -1,5 +1,4 @@
-import 'package:break_clean/core/const/colors.dart';
-import 'package:break_clean/core/local/app_local.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/translator.dart';
 import 'package:flutter/material.dart';
 
 class  SearchFiled extends StatelessWidget {
@@ -9,16 +8,12 @@ class  SearchFiled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final translator = AppLocalizations.of(context)!;
     return TextField(
-
       autofocus: true,
       controller: controller,
-      cursorColor: MyColors.myGrey,
-
       decoration: InputDecoration(
         hintStyle: TextStyle(fontSize: 18, ),
-        hintText: translator.translate('Find a character'),
+        hintText: translator(context,'Find a character'),
         border: InputBorder.none,
       ),
       style: TextStyle(fontSize: 18, ),

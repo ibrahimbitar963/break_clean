@@ -43,7 +43,6 @@ class _CharactersPageState extends State<CharactersPage> {
         if (state is Loading) {
           return ShowLoadingIndicator();
         } else if (state is CharactersBloc) {
-          ShowLoadingIndicator();
           context.read<CharacterBloc>().add(GetAllCharacterEvent());
           allCharacters = charModel;
           return LoadedListWidget(list: buildCharactersList(),);
@@ -109,7 +108,8 @@ class _CharactersPageState extends State<CharactersPage> {
           BuildContext context,
           ConnectivityResult connectivity,
           Widget child,
-        ) {
+        )
+        {
           final bool connected = connectivity != ConnectivityResult.none;
           if (connected) {
             return buildBlocWidget();
@@ -118,21 +118,18 @@ class _CharactersPageState extends State<CharactersPage> {
           }
         },
         child: ShowLoadingIndicator(),
-
       ),
-
-
    );
   }
+
   Future<List<CharacterModel>> charList() async {
-
-
     characterRemoteDataSource.getAllCharacter().then((value) {
       List<CharacterModel> returnList = value;
       charModel = returnList;
     });
     return charModel;
   }
+
   void _startSearch() {
     ModalRoute.of(context)!
         .addLocalHistoryEntry(LocalHistoryEntry(onRemove: _stopSearching));
@@ -141,12 +138,14 @@ class _CharactersPageState extends State<CharactersPage> {
       _isSearching = true;
     });
   }
+
   void _stopSearching() {
     _searchTextController.clear();
     setState(() {
       _isSearching = false;
     });
   }
+
   void addSearchedItemToCharacterList(String searchedCharacter) {
     searchedCharacterList = allCharacters
         .where((character) =>
@@ -154,8 +153,6 @@ class _CharactersPageState extends State<CharactersPage> {
         .toList();
     setState(() {});
   }
-
-
 }
 
 

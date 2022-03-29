@@ -1,4 +1,3 @@
-import 'package:break_clean/core/const/colors.dart';
 import 'package:flutter/material.dart';
 
 class ShowLoadingIndicator extends StatelessWidget {
@@ -11,7 +10,6 @@ class ShowLoadingIndicator extends StatelessWidget {
     return Center(
       child: Container(
         child: CircularProgressIndicator(
-          color: MyColors.myYellow,
         ),
       ),
     );

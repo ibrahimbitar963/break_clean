@@ -18,7 +18,6 @@ class GetOneCharacter implements UseCase<Character,Params> {
 class Params extends Equatable  {
   final int charId;
   Params({required this.charId});
-
   @override
   List<Object> get props => [charId];
 
