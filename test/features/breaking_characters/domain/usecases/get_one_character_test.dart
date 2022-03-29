@@ -39,9 +39,7 @@ void main() {
   );
 
   test('should get one character', () async* {
-    when(mockCharacter.getOneCharacter(any))
-
-        .thenAnswer((_) async => Right(characterTest));
+    when(mockCharacter.getOneCharacter(any)).thenAnswer((_) async => Right(characterTest));
     final result = await useCase(Params(charId:characterId));
     expect(result, Right(characterTest));
     verify(mockCharacter.getOneCharacter(characterId));

@@ -101,43 +101,8 @@ void main() {
       setUp(() {
         when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
       });
-      // test(
-      //     'should return last locally cached data when the cached data is present  ',
-      //     () async {
-      //   when(mockLocalDataSource.getLastCharacter())
-      //       .thenAnswer((_) async => tCharacterModel);
-      //   final result = repositoryImpl.getOneCharacters(tCharacterNumber);
-      //   //   verifyNoMoreInteractions(mockRemoteDataSource);
-      //   verify(mockLocalDataSource.getLastCharacter());
-      //   expect(result, Right(tCharacterNumber));
-      // });
     });
   });
 }
 
-// group('device online', ()async* {
-//
-//     when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-//   test('should get data if the device is online', () async* {
-//     when(mockRemoteDataSource.getOneCharacters(tCharacterNumber))
-//         .thenAnswer((_) async => tCharacterModel);
-//     final result = await repositoryImpl.getOneCharacters(tCharacterNumber);
-//     expect(result, equals(Right(tCharacter)));
-//     verify(mockRemoteDataSource.getOneCharacters(tCharacterNumber));
-//   });
-// });
 
-//     group('device offline', () {
-//       setUp(() {
-//         when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-// // test(description, body)
-//       });
-//     });
-//     test('should check if the device is online', () async {
-//       //arrange
-//       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-//       //act
-//       repositoryImpl.getOneCharacters(tCharacterNumber);
-//       //assert
-//       verify(mockNetworkInfo.isConnected);
-//     });

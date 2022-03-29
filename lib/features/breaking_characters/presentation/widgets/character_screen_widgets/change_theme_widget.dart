@@ -14,7 +14,8 @@ class ChangeThemeWidget extends StatelessWidget {
 
     return Switch.adaptive(
       activeColor: Theme.of(context).accentColor,
-        value: themeChecker.isDark, onChanged: (value){
+        value: themeChecker.isDark,
+        onChanged: (value){
       final provider = Provider.of<ThemeChecker>(context, listen: false);
       provider.changeTheme(value);
     });
