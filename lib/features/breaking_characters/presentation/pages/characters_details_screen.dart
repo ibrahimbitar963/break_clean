@@ -1,34 +1,13 @@
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/divider.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/rich_widget.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/sliver_appbar.dart';
 import 'package:flutter/material.dart';
 
 class CharactersDetailsScreen extends StatelessWidget {
  final Character character;
   CharactersDetailsScreen({required this.character});
 
-  Widget buildSliverAppBar() {
-    return SliverAppBar(
-      expandedHeight: 570,
-      pinned: true,
-      stretch: true,
-      flexibleSpace: FlexibleSpaceBar(
-        collapseMode: CollapseMode.none,
-        centerTitle: true,
-        title: Text(
-          character.actorName,
-          textAlign: TextAlign.center,
-        ),
-        background: Hero(
-          tag: character.charID,
-          child: Image.network(
-            character.image,
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget characterInfo({required String title, required String value}) {
     return RichWidget(
@@ -48,7 +27,7 @@ class CharactersDetailsScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          buildSliverAppBar(),
+          BuildSliverAppbar(character: character),
           SliverList(
             delegate: SliverChildListDelegate(
               [
@@ -101,6 +80,8 @@ class CharactersDetailsScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 
 

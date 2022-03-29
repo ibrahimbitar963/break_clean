@@ -1,5 +1,4 @@
 import 'package:break_clean/core/const/themes.dart';
-import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
 import 'package:break_clean/features/breaking_characters/presentation/pages/characters_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,8 +22,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
    MyApp({Key? key, required this.appRouter}) : super(key: key);
-
-
   late   CharacterRepositoryImpl charactersRepositoryImpl;
   final AppRouter appRouter;
 
@@ -32,7 +29,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-charactersRepositoryImpl = CharacterRepositoryImpl(remoteDataSource: sl(), networkInfo: sl(), localDataSource: sl(),);
+  charactersRepositoryImpl = CharacterRepositoryImpl(remoteDataSource: sl(), networkInfo: sl(), localDataSource: sl(),);
     return ChangeNotifierProvider(
       create: (context)=>ThemeChecker(),
       builder: (context,_) {
