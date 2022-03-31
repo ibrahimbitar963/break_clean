@@ -1,5 +1,6 @@
 import 'package:break_clean/core/const/themes.dart';
 import 'package:break_clean/features/breaking_characters/presentation/pages/characters_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -13,10 +14,21 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
   await di.init();
-  runApp(MyApp(
+  runApp(EasyLocalization(saveLocale: true,child: MyApp(
     appRouter: AppRouter(),
-  ));
+
+  ),
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('ar', 'EG'),
+      ],
+      path: 'assets/languages'),
+
+
+      );
 }
 
 class MyApp extends StatelessWidget {
@@ -35,19 +47,13 @@ class MyApp extends StatelessWidget {
       create: (context) => ThemeChecker(),
       builder: (context, _) {
         final themeProvider = Provider.of<ThemeChecker>(context);
-
         return BlocProvider<CharacterBloc>(
           create: (context) => CharacterBloc(charactersRepositoryImpl),
           child: MaterialApp(
-            supportedLocales: [
-              Locale('en', 'US'),
-              Locale('ar', 'EG'),
-            ],
-            localizationsDelegates: [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
+
+            localizationsDelegates: context.localizationDelegates,
+            locale: context.locale,
+            supportedLocales: context.supportedLocales,
             localeResolutionCallback: (locale, supportedLocales) {
               for (var supportedLocale in supportedLocales) {
                 if (supportedLocale.languageCode == locale!.languageCode &&

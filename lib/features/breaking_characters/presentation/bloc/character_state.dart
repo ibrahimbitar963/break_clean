@@ -4,18 +4,19 @@ abstract class CharacterState extends Equatable {
   @override
   CharacterState([List props = const <dynamic>[]]):super();
 
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => props;
 }
 
 class CharactersBloc extends CharacterState {
   List<CharacterModel> characters = [];
 }
-class Loading extends CharacterState {}
+class Loading extends CharacterState {
+
+}
 class Loaded extends CharacterState {
 
 
-  List<Character> characters = [];
-  Loaded( this.characters, {character}):super([characters]);
+
 }
 class Error extends CharacterState{
 

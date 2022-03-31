@@ -18,7 +18,6 @@ class AppRouter {
   late CharacterBloc characterBloc;
   AppRouter() {
     characterRepo = CharacterRepositoryImpl(localDataSource: sl(), remoteDataSource: sl(), networkInfo: sl());
-    // quoteRepo = QuoteRepo(CharactersWebServices());
     characterBloc = CharacterBloc(characterRepo);
   }
 
@@ -27,6 +26,7 @@ class AppRouter {
       case CharactersPages:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
+              lazy: false,
                   create: (context) => CharacterBloc(characterRepo),
                   child: CharactersPage(),
                 ),

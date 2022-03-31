@@ -83,7 +83,7 @@ class MockCharacterRepositoryImpl extends Mock implements CharacterRepositoryImp
                       .thenAnswer((_) async => Right(characterTest));
 
                   //assert later
-                  final expeted = [CharactersBloc(), Loading(), Loaded(characterTest)];
+                  final expeted = [CharactersBloc(), Loading(), Loaded()];
                   expectLater(characterBloc, emitsInOrder(expeted));
                   //act
                   characterBloc.add(GetAllCharacterEvent());

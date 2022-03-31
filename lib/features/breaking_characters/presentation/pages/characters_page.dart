@@ -11,6 +11,7 @@ import 'package:break_clean/features/breaking_characters/presentation/widgets/ch
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loaded_list.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loading_indicator.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/search_filed.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/navigaation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
@@ -34,23 +35,22 @@ class _CharactersPageState extends State<CharactersPage> {
   @override
   void initState() {
     super.initState();
+
     charList();
-    context.read<CharacterBloc>().add(GetAllCharacterEvent());
+
   }
   Widget buildBlocWidget() {
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
         if (state is Loading) {
           return ShowLoadingIndicator();
-        } else if (state is CharactersBloc) {
-          context.read<CharacterBloc>().add(GetAllCharacterEvent());
+        } else
+          if (state is CharactersBloc ) {
           allCharacters = charModel;
           return LoadedListWidget(list: buildCharactersList(),);
-        } else if (state is Error) {
-          return ShowLoadingIndicator();
-        } else {
-          return ShowLoadingIndicator();
         }
+          return ShowLoadingIndicator();
+
       },
     );
   }
@@ -101,7 +101,7 @@ class _CharactersPageState extends State<CharactersPage> {
             ? BackButton(
 
               )
-            : ChangeThemeWidget(),
+            : Container(),
       ),
       body: OfflineBuilder(
         connectivityBuilder: (
@@ -119,13 +119,16 @@ class _CharactersPageState extends State<CharactersPage> {
         },
         child: ShowLoadingIndicator(),
       ),
+      bottomNavigationBar: NavBar(),
+
    );
   }
 
   Future<List<CharacterModel>> charList() async {
-    characterRemoteDataSource.getAllCharacter().then((value) {
+     await characterRemoteDataSource.getAllCharacter().then((value) {
       List<CharacterModel> returnList = value;
       charModel = returnList;
+      print('aaaaaaaaaaaaaaa');
     });
     return charModel;
   }
@@ -154,6 +157,8 @@ class _CharactersPageState extends State<CharactersPage> {
     setState(() {});
   }
 }
+
+
 
 
 

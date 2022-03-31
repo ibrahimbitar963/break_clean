@@ -1,5 +1,5 @@
-import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/translator.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({
@@ -10,7 +10,7 @@ class AppBarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Text(
-     translator(context,'APP_BAR_TITLE'),
+     'Characters'.tr().toString()
 
     );
   }

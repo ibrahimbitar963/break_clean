@@ -2,13 +2,14 @@
 
 {
 
-     "Characters": "Characters : ",
+     "Characters": "Characters  ",
      "Jobs": "Jobs : ",
      "Appeared In": "Appeared In : ",
       "Seasons": "Seasons : ",
       "Status": "Status : ",
       "better call saul appearance": "better call saul appearance : ",
       "APP_BAR_TITLE": "Characters",
-      "Find a character": "Find a character"
-
+      "Find a character": "Find a character",
+      "Change theme": "Change theme"   ,
+      "Change language": "Change language"
 }

@@ -2,14 +2,15 @@
 
 {
 
-  "Characters": "الشخصيات : ",
+  "Characters": "الشخصيات  ",
   "Jobs": "الأعمال : ",
   "Appeared In": "الظهور : ",
   "Seasons": "المواسم : ",
   "Status": "الحالة : ",
   "better call saul appearance": "الظهور في المسلسل الثاني : ",
   "APP_BAR_TITLE": "الشخصيات",
-  "Find a character": "ابحث عن إحدى الشخصيات"
-
+  "Find a character": "ابحث عن إحدى الشخصيات",
+  "Change theme": "تغيير الثيم"   ,
+  "Change language": "تغيير اللغة"
 
 }

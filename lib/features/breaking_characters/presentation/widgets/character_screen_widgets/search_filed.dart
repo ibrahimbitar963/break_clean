@@ -1,6 +1,5 @@
-import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/translator.dart';
 import 'package:flutter/material.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class  SearchFiled extends StatelessWidget {
   final TextEditingController controller ;
   final ValueChanged<String> addSearch;
@@ -13,7 +12,8 @@ class  SearchFiled extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         hintStyle: TextStyle(fontSize: 18, ),
-        hintText: translator(context,'Find a character'),
+        hintText:'Find a character'.tr().toString()
+        ,
         border: InputBorder.none,
       ),
       style: TextStyle(fontSize: 18, ),

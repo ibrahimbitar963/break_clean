@@ -2,8 +2,8 @@ import 'package:break_clean/features/breaking_characters/domain/entites/characte
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/divider.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/rich_widget.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/sliver_appbar.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/translator.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CharactersDetailsScreen extends StatelessWidget {
  final Character character;
@@ -35,28 +35,28 @@ class CharactersDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       characterInfo(
-                          title: translator(context,'Jobs'),
+                          title: 'Jobs'.tr().toString(),
                           value: character.jobs.join('/')),
                       buildDivider(endIndent: 275),
                       characterInfo(
-                          title: translator(context,'Appeared In'),
+                          title: 'Appeared In'.tr().toString(),
                           value: character.category),
                       buildDivider(endIndent: 215),
                       characterInfo(
-                        title: translator(context,'Seasons'),
+                        title: 'Seasons'.tr().toString(),
                         value: character.appearance.join(
                           '/',
                         ),
                       ),
                       buildDivider(endIndent: 240),
                       characterInfo(
-                          title: translator(context,'Status'),
+                          title: 'Status'.tr().toString(),
                           value: character.statusIfDeadOrAlive),
                       buildDivider(endIndent: 260),
                       character.betterCallSaulAppearance.isEmpty
                           ? Container()
                           : characterInfo(
-                              title: translator(context,'better call saul appearance'),
+                              title: 'better call saul appearance'.tr().toString(),
                               value: character.betterCallSaulAppearance
                                   .join('/'),),
                       character.betterCallSaulAppearance.isEmpty

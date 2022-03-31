@@ -10,4 +10,6 @@ class GetAllCharacterEvent extends CharacterEvent{
 
 }
 
+class LoadingEvent extends CharacterEvent{}
+
 

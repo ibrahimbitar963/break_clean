@@ -7,6 +7,7 @@ import 'package:break_clean/features/breaking_characters/data/models/character_m
 import 'package:break_clean/features/breaking_characters/data/repositories/character_repository_impl.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:break_clean/features/breaking_characters/domain/repositories/characters_repository.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loading_indicator.dart';
 import 'package:equatable/equatable.dart';
 import 'package:break_clean/injection_container.dart' as di;
 part 'character_event.dart';
@@ -19,6 +20,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
 
   CharacterBloc(CharacterRepositoryImpl characterRepo) : super(CharactersBloc()) {
     on<GetAllCharacterEvent>((event, emit) async {
+
       characters = di.sl<CharacterRemoteDataSource>().getAllCharacter();
     });
   }
