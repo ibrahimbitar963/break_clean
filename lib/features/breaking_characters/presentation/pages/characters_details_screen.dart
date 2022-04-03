@@ -37,22 +37,22 @@ class CharactersDetailsScreen extends StatelessWidget {
                       characterInfo(
                           title: 'Jobs'.tr().toString(),
                           value: character.jobs.join('/')),
-                      buildDivider(endIndent: 275),
+                      buildDivider(endIndent: 300),
                       characterInfo(
                           title: 'Appeared In'.tr().toString(),
                           value: character.category),
-                      buildDivider(endIndent: 215),
+                      buildDivider(endIndent: 270),
                       characterInfo(
                         title: 'Seasons'.tr().toString(),
                         value: character.appearance.join(
                           '/',
                         ),
                       ),
-                      buildDivider(endIndent: 240),
+                      buildDivider(endIndent: 280),
                       characterInfo(
                           title: 'Status'.tr().toString(),
                           value: character.statusIfDeadOrAlive),
-                      buildDivider(endIndent: 260),
+                      buildDivider(endIndent: 280),
                       character.betterCallSaulAppearance.isEmpty
                           ? Container()
                           : characterInfo(

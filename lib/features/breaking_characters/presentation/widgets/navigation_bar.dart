@@ -1,7 +1,6 @@
-import 'package:break_clean/core/const/themes.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/change_theme_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:theme_mode_handler/theme_mode_handler.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -9,10 +8,8 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  bool isOn = true;
-
   bool lan = true;
-  final ThemeChecker themeChecker = ThemeChecker();
+  bool theme = true;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +32,21 @@ class _NavBarState extends State<NavBar> {
           ),
         ),
         BottomNavigationBarItem(
-            label: 'Change theme'.tr().toString(), icon: ChangeThemeWidget()),
+          label: 'Change theme'.tr().toString(),
+          icon: IconButton(
+            onPressed: () {
+              if (theme == true) {
+                ThemeModeHandler.of(context)!.saveThemeMode(ThemeMode.dark); //D
+
+                theme = false;
+              } else {
+                ThemeModeHandler.of(context)!.saveThemeMode(ThemeMode.light); //
+                theme = true;
+              }
+            },
+            icon: Icon(Icons.brightness_6_outlined),
+          ),
+        ),
       ],
     );
   }

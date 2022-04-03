@@ -11,7 +11,7 @@ import 'package:break_clean/features/breaking_characters/presentation/widgets/ch
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loaded_list.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loading_indicator.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/search_filed.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/navigaation_bar.dart';
+import 'package:break_clean/features/breaking_characters/presentation/widgets/navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
@@ -128,7 +128,8 @@ class _CharactersPageState extends State<CharactersPage> {
      await characterRemoteDataSource.getAllCharacter().then((value) {
       List<CharacterModel> returnList = value;
       charModel = returnList;
-      print('aaaaaaaaaaaaaaa');
+
+
     });
     return charModel;
   }

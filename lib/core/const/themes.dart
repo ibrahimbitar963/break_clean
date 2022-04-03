@@ -1,16 +1,6 @@
 import 'package:break_clean/core/const/colors.dart';
 import 'package:flutter/material.dart';
 
-class ThemeChecker extends ChangeNotifier {
-      ThemeMode themeMode = ThemeMode.system;
-      bool get isDark => themeMode == ThemeMode.dark;
-
-      void changeTheme(bool isOn) {
-        themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
-        notifyListeners();
-      }
-}
-
 class Themes {
   static final myDark = ThemeData(
     accentColor: Colors.white54,

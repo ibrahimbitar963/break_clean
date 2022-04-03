@@ -6,6 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:theme_mode_handler/theme_mode_handler.dart';
+import 'package:theme_mode_handler/theme_mode_manager_interface.dart';
 
 import 'core/network/network_info.dart';
 import 'features/breaking_characters/data/repositories/character_repository_impl.dart';

@@ -519,7 +519,7 @@ packages:
     source: hosted
     version: "4.2.3"
   provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: provider
       url: "https://pub.dartlang.org"
@@ -656,6 +656,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
+  theme_mode_handler:
+    dependency: "direct main"
+    description:
+      name: theme_mode_handler
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   timing:
     dependency: transitive
     description:
