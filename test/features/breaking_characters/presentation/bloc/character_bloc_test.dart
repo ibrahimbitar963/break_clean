@@ -10,7 +10,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import '../../data/repositories/characters_repositroy_impl_test.dart';
 
 @GenerateMocks([CharactersRepository])
@@ -65,7 +64,7 @@ class MockCharacterRepositoryImpl extends Mock implements CharacterRepositoryImp
 
             )];
 
-            test('should get data from the get all usecase', () async* {
+            test('should get data from the get all use cases', () async* {
               //arrange
               when(mockGetAllCharacter(any))
                   .thenAnswer((_) async => Right(characterTest));
@@ -83,8 +82,8 @@ class MockCharacterRepositoryImpl extends Mock implements CharacterRepositoryImp
                       .thenAnswer((_) async => Right(characterTest));
 
                   //assert later
-                  final expeted = [CharactersBloc(), Loading(), Loaded()];
-                  expectLater(characterBloc, emitsInOrder(expeted));
+                  final expected = [CharactersBloc(), Loading(), Loaded()];
+                  expectLater(characterBloc, emitsInOrder(expected));
                   //act
                   characterBloc.add(GetAllCharacterEvent());
                 });
@@ -94,12 +93,12 @@ class MockCharacterRepositoryImpl extends Mock implements CharacterRepositoryImp
                   .thenAnswer((_) async => Left(ServerFailure()));
 
               //assert later
-              final expeted = [
+              final expected = [
                 CharactersBloc(),
                 Loading(),
                 Error(message: SERVER_FAILURE_MESSAGE)
               ];
-              expectLater(characterBloc, emitsInOrder(expeted));
+              expectLater(characterBloc, emitsInOrder(expected));
               //act
               characterBloc.add(GetAllCharacterEvent());
             });

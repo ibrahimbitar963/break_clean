@@ -11,6 +11,7 @@ import 'injection_container.dart';
 class AppRouter {
   late CharacterRepositoryImpl characterRepo;
   late CharacterBloc characterBloc;
+
   AppRouter() {
     characterRepo = CharacterRepositoryImpl(localDataSource: sl(), remoteDataSource: sl(), networkInfo: sl());
     characterBloc = CharacterBloc(characterRepo);

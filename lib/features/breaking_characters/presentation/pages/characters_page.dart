@@ -29,14 +29,12 @@ class _CharactersPageState extends State<CharactersPage> {
   final _searchTextController = TextEditingController();
   late List<CharacterModel> charModel = [];
 
-
   @override
   void initState() {
     super.initState();
-
     charList();
-
   }
+
   Widget buildBlocWidget() {
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
@@ -48,10 +46,10 @@ class _CharactersPageState extends State<CharactersPage> {
           return LoadedListWidget(list: buildCharactersList(),);
         }
           return ShowLoadingIndicator();
-
       },
     );
   }
+
   Widget buildCharactersList() {
     return Center(
       child: Center(
@@ -60,7 +58,7 @@ class _CharactersPageState extends State<CharactersPage> {
             crossAxisCount: 2,
             childAspectRatio: 2 / 3,
             crossAxisSpacing: 1,
-            mainAxisSpacing: 1,
+             mainAxisSpacing: 1,
           ),
           itemBuilder: (context, index) {
             return CharactersItem(
@@ -80,7 +78,6 @@ class _CharactersPageState extends State<CharactersPage> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,9 +93,7 @@ class _CharactersPageState extends State<CharactersPage> {
         actions(context: context, search: false, onPressed: _startSearch)
         ,
         leading: _isSearching
-            ? BackButton(
-
-              )
+            ? BackButton()
             : Container(),
       ),
       body: OfflineBuilder(
@@ -126,8 +121,6 @@ class _CharactersPageState extends State<CharactersPage> {
      await characterRemoteDataSource.getAllCharacter().then((value) {
       List<CharacterModel> returnList = value;
       charModel = returnList;
-
-
     });
     return charModel;
   }
