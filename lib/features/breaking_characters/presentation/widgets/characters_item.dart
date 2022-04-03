@@ -17,8 +17,7 @@ class CharactersItem extends StatelessWidget {
         color: Theme.of(context).accentColor,
       ),
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, charactersDetailsScreen,
-            arguments: character),
+        onTap: () => Navigator.pushNamed(context,charactersDetailsScreen,arguments: character),
         child: GridTile(
           child: Hero(
             tag: character.charID,

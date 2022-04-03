@@ -6,7 +6,6 @@ import 'package:dartz/dartz.dart';
 
 class GetAllCharacter implements UseCase<Character, NoParams> {
   final CharactersRepository repository;
-
   GetAllCharacter(this.repository);
 
   @override

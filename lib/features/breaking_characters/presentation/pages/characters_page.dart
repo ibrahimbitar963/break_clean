@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'package:break_clean/core/const/strings.dart';
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:break_clean/features/breaking_characters/data/models/character_model.dart';
 import 'package:break_clean/features/breaking_characters/presentation/bloc/character_bloc.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/alert_widget.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/app_bar_title.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/appbar_actions.dart';
-import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/change_theme_widget.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/characters_item.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loaded_list.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_screen_widgets/loading_indicator.dart';

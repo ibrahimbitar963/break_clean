@@ -1,9 +1,6 @@
-import 'package:break_clean/core/const/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-List<Widget>? actions(
-    {required BuildContext context,
+List<Widget>? actions({required BuildContext context,
     required bool search,
     required VoidCallback onPressed}) {
   if (search) {

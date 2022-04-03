@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:break_clean/features/breaking_characters/data/datasources/character_remote_data_source.dart';
 import 'package:matcher/matcher.dart';
 import 'package:break_clean/core/error/exception.dart';
@@ -28,6 +27,7 @@ void main() {
         fixture('characters.json'),
       ),
     );
+
     test(
         'should preform a GET request on a URL with character being the endpoint and with application/json header',
         () async* {
@@ -42,6 +42,7 @@ void main() {
         ),
       );
     });
+
     test('should return Character when the response code is 200 (success)',
         () async* {
       when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(

@@ -8,4 +8,5 @@ const String UNEXPECTED_ERROR= 'Unexpected error';
 const String API_URL = 'https://www.breakingbadapi.com/api/characters/';
 const String PATH_TO_LOCALE= 'assets/languages';
 const String THEME_PREF= "THEME_PREF";
-List<Locale> supportedLocales= [Locale('en', 'US'), Locale('ar', 'EG'),];
+const CACHED_CHARACTER = 'CACHED_CHARACTER';
+const List<Locale> supportedLocales= [Locale('en', 'US'), Locale('ar', 'EG'),];

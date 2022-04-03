@@ -3,8 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:theme_mode_handler/theme_mode_manager_interface.dart';
 import 'app_router.dart';
-import 'core/app.dart';
-
+import 'core/app/app.dart';
 import 'core/const/strings.dart';
 import 'injection_container.dart' as di;
 
