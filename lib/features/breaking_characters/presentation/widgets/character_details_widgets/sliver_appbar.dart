@@ -1,5 +1,6 @@
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class BuildSliverAppbar extends StatelessWidget {
   const BuildSliverAppbar({
@@ -12,7 +13,7 @@ class BuildSliverAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: 570,
+      expandedHeight: 93.h,
       pinned: true,
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(

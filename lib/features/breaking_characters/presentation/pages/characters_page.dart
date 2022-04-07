@@ -97,6 +97,7 @@ class _CharactersPageState extends State<CharactersPage> {
             : Container(),
       ),
       body: OfflineBuilder(
+
         connectivityBuilder: (
           BuildContext context,
           ConnectivityResult connectivity,

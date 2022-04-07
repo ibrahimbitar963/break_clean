@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:theme_mode_handler/theme_mode_handler.dart';
+import 'package:sizer/sizer.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -10,11 +11,31 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   bool lan = true;
   bool theme = true;
+  late int index;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       items: [
+        BottomNavigationBarItem(
+
+          label: 'Change theme'.tr().toString(),
+          icon: IconButton(
+            onPressed: () {
+              if (theme == true) {
+                ThemeModeHandler.of(context)!.saveThemeMode(ThemeMode.dark); //D
+
+                theme = false;
+              } else {
+                ThemeModeHandler.of(context)!.saveThemeMode(ThemeMode.light); //
+                theme = true;
+              }
+            },
+            icon: Icon(Icons.brightness_6_outlined,),
+          ),
+        ),
         BottomNavigationBarItem(
           label: 'Change language'.tr().toString(),
           icon: IconButton(
@@ -28,26 +49,18 @@ class _NavBarState extends State<NavBar> {
                 lan = true;
               }
             },
-            icon: Icon(Icons.translate),
+            icon: Icon(
+              Icons.translate,
+            ),
           ),
         ),
-        BottomNavigationBarItem(
-          label: 'Change theme'.tr().toString(),
-          icon: IconButton(
-            onPressed: () {
-              if (theme == true) {
-                ThemeModeHandler.of(context)!.saveThemeMode(ThemeMode.dark); //D
 
-                theme = false;
-              } else {
-                ThemeModeHandler.of(context)!.saveThemeMode(ThemeMode.light); //
-                theme = true;
-              }
-            },
-            icon: Icon(Icons.brightness_6_outlined),
-          ),
-        ),
       ],
+      selectedLabelStyle: TextStyle(fontSize: 12.sp),
+      unselectedLabelStyle:TextStyle(fontSize: 9.sp) ,
+      selectedItemColor:Theme.of(context).canvasColor,
+
+
     );
   }
 }

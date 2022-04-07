@@ -2,6 +2,7 @@ import 'package:break_clean/core/const/strings.dart';
 import 'package:break_clean/features/breaking_characters/domain/entites/character.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class CharactersItem extends StatelessWidget {
   late final Character character;
@@ -10,6 +11,8 @@ class CharactersItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+
+
       margin: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -34,18 +37,20 @@ class CharactersItem extends StatelessWidget {
           ),
           footer: Container(
             width: double.infinity,
+
             padding: EdgeInsets.symmetric(
-              horizontal: 15,
-              vertical: 10,
+
+              horizontal: 2.h,
+              vertical: 1.2.h,
             ),
             color: Theme.of(context).accentColor,
             alignment: Alignment.bottomCenter,
             child: Text(
               '${character.nickName}',
               style: TextStyle(
-                height: 1.3,
+                height: 0.17.h,
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: 12.5.sp,
               ),
               overflow: TextOverflow.ellipsis,
               maxLines: 2,

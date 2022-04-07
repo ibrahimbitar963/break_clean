@@ -1,5 +1,5 @@
-import 'package:break_clean/core/const/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart'
+;import 'package:flutter/material.dart';
 
 class LoadedListWidget extends StatelessWidget {
  final Widget list;
@@ -9,8 +9,11 @@ class LoadedListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
+        width: 100.w,
+
 
         child: Column(
+
           children: [
            list,
           ],

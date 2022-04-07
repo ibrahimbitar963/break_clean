@@ -4,6 +4,7 @@ import 'package:break_clean/features/breaking_characters/presentation/pages/char
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:sizer/sizer.dart';
 import 'package:theme_mode_handler/theme_mode_handler.dart';
 import 'package:theme_mode_handler/theme_mode_manager_interface.dart';
 import '../../app_router.dart';
@@ -29,16 +30,21 @@ class MyApp extends StatelessWidget {
       child: ThemeModeHandler(
         manager: themeModeManager,
         builder: (ThemeMode themeMode) {
-          return MaterialApp(
-            localizationsDelegates: context.localizationDelegates,
-            locale: context.locale,
-            supportedLocales: context.supportedLocales,
-            onGenerateRoute: appRouter.generateRoute,
-            themeMode: themeMode,
-            theme: Themes.myLight,
-            darkTheme: Themes.myDark,
-            debugShowCheckedModeBanner: false,
-            home: CharactersPage(),
+          return Sizer(
+            builder: (BuildContext context, Orientation orientation, DeviceType deviceType) {
+              return MaterialApp(
+                localizationsDelegates: context.localizationDelegates,
+                locale: context.locale,
+                supportedLocales: context.supportedLocales,
+                onGenerateRoute: appRouter.generateRoute,
+                themeMode: themeMode,
+                theme: Themes.myLight,
+                darkTheme: Themes.myDark,
+                debugShowCheckedModeBanner: false,
+                home: CharactersPage(),
+              );
+            },
+
           );
         },
       ),

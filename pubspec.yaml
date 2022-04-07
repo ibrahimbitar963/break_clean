@@ -27,6 +27,7 @@ dependencies:
   # Value equality
   equatable: ^2.0.0
 
+
   # Remote API
   http: ^0.13.1
 
@@ -46,7 +47,7 @@ dependencies:
   flutter_offline: ^2.0.0
 
 
-
+  sizer: ^2.0.10
   cupertino_icons: ^1.0.2
   easy_localization: ^3.0.0
   theme_mode_handler: ^3.0.0

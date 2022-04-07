@@ -9,6 +9,9 @@ class Themes {
     appBarTheme: AppBarTheme(
         backgroundColor: MyColors.myYellow, foregroundColor: Colors.black),
     dividerColor: MyColors.myYellow,
+    canvasColor: MyColors.myYellow,
+
+
   );
 
   static final myLight = ThemeData(
@@ -19,5 +22,6 @@ class Themes {
         backgroundColor: Colors.tealAccent.shade400,
         foregroundColor: Colors.black),
     dividerColor: Colors.green.shade200,
+    canvasColor: Colors.tealAccent.shade400,
   );
 }

@@ -20,6 +20,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
     on<GetAllCharacterEvent>((event, emit) async {
 
       characters = di.sl<CharacterRemoteDataSource>().getAllCharacter();
+
     });
   }
 }
