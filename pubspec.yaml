@@ -46,6 +46,7 @@ dependencies:
   #to handle offline/online connectivity
   flutter_offline: ^2.0.0
 
+  curved_navigation_bar: ^1.0.2
 
   sizer: ^2.0.10
   cupertino_icons: ^1.0.2

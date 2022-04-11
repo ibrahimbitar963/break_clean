@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:theme_mode_handler/theme_mode_handler.dart';
 import 'package:sizer/sizer.dart';
+import 'dart:io';
 
 class NavBar extends StatefulWidget {
   @override
@@ -33,9 +35,11 @@ class _NavBarState extends State<NavBar> {
                 theme = true;
               }
             },
-            icon: Icon(Icons.brightness_6_outlined,),
+            icon: Platform.isAndroid ? Icon(Icons.brightness_6_outlined):
+                   Icon(CupertinoIcons.brightness) ,
+    ),
           ),
-        ),
+
         BottomNavigationBarItem(
           label: 'Change language'.tr().toString(),
           icon: IconButton(
@@ -49,11 +53,11 @@ class _NavBarState extends State<NavBar> {
                 lan = true;
               }
             },
-            icon: Icon(
-              Icons.translate,
+            icon: Platform.isAndroid ? Icon(Icons.translate):
+    Icon(CupertinoIcons.globe) ,
             ),
           ),
-        ),
+
 
       ],
       selectedLabelStyle: TextStyle(fontSize: 12.sp),
