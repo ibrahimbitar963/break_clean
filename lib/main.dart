@@ -18,10 +18,8 @@ void main() async {
     EasyLocalization(
         saveLocale: true,
         child: MyApp(
-
           appRouter: AppRouter(),
           themeModeManager: themeModeManager,
-
         ),
         supportedLocales: supportedLocales,
         path: PATH_TO_LOCALE),

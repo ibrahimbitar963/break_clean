@@ -45,20 +45,17 @@ dependencies:
 
   #to handle offline/online connectivity
   flutter_offline: ^2.0.0
+  geolocator: ^7.0.0
+  geocoding: ^2.0.0
 
-  curved_navigation_bar: ^1.0.2
+
+
 
   sizer: ^2.0.10
   cupertino_icons: ^1.0.2
   easy_localization: ^3.0.0
   theme_mode_handler: ^3.0.0
-
-
-
-
-
-
-
+  image_downloader: 0.30.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

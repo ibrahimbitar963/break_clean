@@ -2,8 +2,12 @@ import 'package:break_clean/features/breaking_characters/domain/entites/characte
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/divider.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/rich_widget.dart';
 import 'package:break_clean/features/breaking_characters/presentation/widgets/character_details_widgets/sliver_appbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'dart:io';
+import '../image downloader.dart';
+import 'package:sizer/sizer.dart';
 
 class CharactersDetailsScreen extends StatelessWidget {
  final Character character;
@@ -37,7 +41,7 @@ class CharactersDetailsScreen extends StatelessWidget {
                       characterInfo(
                           title: 'Jobs'.tr().toString(),
                           value: character.jobs.join('/')),
-                      buildDivider(endIndent: 300),
+                      buildDivider(endIndent: 270),
                       characterInfo(
                           title: 'Appeared In'.tr().toString(),
                           value: character.category),
@@ -48,11 +52,11 @@ class CharactersDetailsScreen extends StatelessWidget {
                           '/',
                         ),
                       ),
-                      buildDivider(endIndent: 280),
+                      buildDivider(endIndent: 270),
                       characterInfo(
                           title: 'Status'.tr().toString(),
                           value: character.statusIfDeadOrAlive),
-                      buildDivider(endIndent: 280),
+                      buildDivider(endIndent: 270),
                       character.betterCallSaulAppearance.isEmpty
                           ? Container()
                           : characterInfo(
@@ -62,7 +66,7 @@ class CharactersDetailsScreen extends StatelessWidget {
                       character.betterCallSaulAppearance.isEmpty
                           ? Container()
                           : buildDivider(endIndent: 92),
-                            SizedBox(height: 50,),
+                            SizedBox(height: 50.h,),
 
                     ],
                   ),
@@ -75,8 +79,15 @@ class CharactersDetailsScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    floatingActionButton: FloatingActionButton(
+      child: Platform.isAndroid? Icon(Icons.download_outlined):
+        Icon(CupertinoIcons.cloud_download),
+      backgroundColor: Colors.grey,
+      onPressed:()=> buildImageDownloader(character.image,context)));
+
   }
+
+
 }
 
 
