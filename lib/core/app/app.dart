@@ -4,8 +4,6 @@ import 'package:break_clean/features/breaking_characters/presentation/pages/char
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:sizer/sizer.dart';
 import 'package:theme_mode_handler/theme_mode_handler.dart';
 import 'package:theme_mode_handler/theme_mode_manager_interface.dart';
@@ -24,39 +22,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final geolocator =
-  Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
-  late Position _currentPosition;
-  String currentAddress = "";
 
-  void getCurrentLocation() {
-    Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
-        .then((Position position) {
-      setState(() {
-        _currentPosition = position;
-      });
-
-      getAddressFromLatLng();
-    }).catchError((e) {
-      print(e);
-    });
-  }
-
-  void getAddressFromLatLng() async {
-    try {
-      List<Placemark> p = await placemarkFromCoordinates(
-          _currentPosition.latitude, _currentPosition.longitude);
-
-      Placemark place = p[0];
-
-      setState(() {
-        currentAddress =
-        "${place.thoroughfare},${place.subThoroughfare},${place.name}, ${place.subLocality}";
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
   late CharacterRepositoryImpl charactersRepositoryImpl;
 
   @override

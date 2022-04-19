@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'dart:io';
-import '../image downloader.dart';
+import '../../../../core/image_downloader/image downloader.dart';
 import 'package:sizer/sizer.dart';
 
 class CharactersDetailsScreen extends StatelessWidget {
@@ -41,22 +41,22 @@ class CharactersDetailsScreen extends StatelessWidget {
                       characterInfo(
                           title: 'Jobs'.tr().toString(),
                           value: character.jobs.join('/')),
-                      buildDivider(endIndent: 270),
+                      buildDivider(endIndent: 225.sp),
                       characterInfo(
                           title: 'Appeared In'.tr().toString(),
                           value: character.category),
-                      buildDivider(endIndent: 270),
+                      buildDivider(endIndent: 225.sp),
                       characterInfo(
                         title: 'Seasons'.tr().toString(),
                         value: character.appearance.join(
                           '/',
                         ),
                       ),
-                      buildDivider(endIndent: 270),
+                      buildDivider(endIndent: 225.sp),
                       characterInfo(
                           title: 'Status'.tr().toString(),
                           value: character.statusIfDeadOrAlive),
-                      buildDivider(endIndent: 270),
+                      buildDivider(endIndent: 225.sp),
                       character.betterCallSaulAppearance.isEmpty
                           ? Container()
                           : characterInfo(
@@ -65,7 +65,7 @@ class CharactersDetailsScreen extends StatelessWidget {
                                   .join('/'),),
                       character.betterCallSaulAppearance.isEmpty
                           ? Container()
-                          : buildDivider(endIndent: 92),
+                          : buildDivider(endIndent: 110.sp),
                             SizedBox(height: 50.h,),
 
                     ],

@@ -12,7 +12,8 @@
   "Find a character": "ابحث عن إحدى الشخصيات",
   "Change theme": "تغيير الثيم"   ,
   "Change language": "تغيير اللغة",
-  "Check internet connection": "الانترنت غير متوفر يرجى التأكد "
-
+  "Check internet connection": "الانترنت غير متوفر يرجى التأكد ",
+  "Image downloaded":"تم تنزيل الصورة بنجاح",
+  "No URL": "لم يتم العثور على عنوان الصورة"
 
 }

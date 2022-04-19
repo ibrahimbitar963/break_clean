@@ -10,5 +10,7 @@
       "Find a character": "Find a character",
       "Change theme": "Change theme"   ,
       "Change language": "Change language",
-      "Check internet connection": "Please check your internet connection"
+      "Check internet connection": "Please check your internet connection",
+      "Image downloaded":"Image downloaded successfully",
+      "No URL": "Image URL not found"
 }
